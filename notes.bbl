@@ -1,0 +1,77 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{carlen}{booklet}{}
+      \name{author}{1}{}{%
+        {{hash=11ed6177711d2df4ed0ce82034aabf6a}{%
+           family={Carlen},
+           familyi={C\bibinitperiod},
+           given={Eric\bibnamedelima A.},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{11ed6177711d2df4ed0ce82034aabf6a}
+      \strng{fullhash}{11ed6177711d2df4ed0ce82034aabf6a}
+      \strng{bibnamehash}{11ed6177711d2df4ed0ce82034aabf6a}
+      \strng{authorbibnamehash}{11ed6177711d2df4ed0ce82034aabf6a}
+      \strng{authornamehash}{11ed6177711d2df4ed0ce82034aabf6a}
+      \strng{authorfullhash}{11ed6177711d2df4ed0ce82034aabf6a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{8}
+      \field{title}{Multivariable Calculus}
+      \field{year}{2019}
+    \endentry
+    \entry{hubbard}{book}{}
+      \name{author}{2}{}{%
+        {{hash=8268de0b64cc065441e3a40c192a7138}{%
+           family={Hubbard},
+           familyi={H\bibinitperiod},
+           given={John\bibnamedelima H.},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=0be28af7d1b867c05b6b6a7db757dc8b}{%
+           family={Hubbard},
+           familyi={H\bibinitperiod},
+           given={Barbara\bibnamedelima Burke},
+           giveni={B\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Matrix Editions}%
+      }
+      \strng{namehash}{a0777bb6404568fe280d76a07f9ea461}
+      \strng{fullhash}{a0777bb6404568fe280d76a07f9ea461}
+      \strng{bibnamehash}{a0777bb6404568fe280d76a07f9ea461}
+      \strng{authorbibnamehash}{a0777bb6404568fe280d76a07f9ea461}
+      \strng{authornamehash}{a0777bb6404568fe280d76a07f9ea461}
+      \strng{authorfullhash}{a0777bb6404568fe280d76a07f9ea461}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780971576681}
+      \field{title}{Vector Calculus, Linear Algebra, and Differential Equations: A Unified Approach}
+      \field{year}{2015}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

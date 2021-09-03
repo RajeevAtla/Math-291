@@ -1,0 +1,501 @@
+
+%%%%%%%%%%% - Preamble
+\documentclass[11pt]{article}
+\usepackage[sans, stdmargin, noindent]{rajeev}
+\usepackage{lastpage}
+\usepackage[inline]{asymptote}
+\usepackage[normalem]{ulem}
+\usepackage{setspace}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{citations.bib}
+\pagestyle{fancy}
+\renewcommand*\contentsname{Table of Contents}
+
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+
+\usepackage{hyperref}
+
+
+
+\rhead{Last Updated: \today}
+\lhead{Math 291 Notes}
+
+
+\setlength{\headheight}{13.6pt}
+
+\begin{document}
+
+
+\begin{center}
+    \Large \textbf{Math 291: Honors Calculus III}
+\end{center}
+\begin{center}
+    \Large Rajeev Atla
+\end{center}
+
+\begin{itemize}
+\item Class taught by Ian Jauslin (assistant professor)
+\item Recitations taught by Yael Davidov (5th year grad student)
+\item Textbook is \emph{Multivariable Calculus} by Eric Carlen \cite{carlen}
+  \begin{itemize}
+  \item Given to us
+  \item Author taught class for several years
+    \begin{itemize}
+    \item Last taught 2019-2020 school year
+    \end{itemize}
+  \item Last updated August 2019
+  \end{itemize}
+\item Additional resources
+  \begin{itemize}
+  \item \emph{Vector Calculus, Linear Algebra, and Differential Forms} by Hubbard and Hubbard \cite{hubbard}
+  \end{itemize}
+\end{itemize}
+
+\newpage
+
+\doublespacing
+\tableofcontents
+\singlespacing
+
+\lecture{September 1}
+
+\subsection{Introduction}
+Course is about calculus - multivariable calculus.
+
+Single variable calculus is assumed.
+
+The course is very dense and has a lot of material.
+As such, some nonessential/easy proofs/examples will be relegated to the textbook or recitation.
+
+
+\subsection{Why 3D Calc}
+The world is 3D.
+We need to generalize 1D calc for it to be applicable to a lot of things.
+We're gonna be working in an arbitrary number of dimensions.
+3 dimensions isn't enough - we often deal with rotation, which adds 3 more angular parameters in addition to 3 for position.
+But we don't stop here - we continue onwards to $n$ dimensions.
+
+We focus less on numbers and more on the concepts - this lets us learn linear algebra, which isn't usually introduced in a typical calculus class.
+
+\subsection{Vector Variables and  Cartesian Coordinates}
+
+This section follows 1.1.2 of \cite{carlen}.
+
+\begin{definition}{Functions}
+  A function takes an ordered collection of numbers and maps it to another ordered collection of numbers.
+\end{definition}
+
+\begin{definition}{Cartesian coordinates}
+  Tells you where a particle is using a base point (the origin $O$) and a set of base vectors: $\pars{\bm{e}_1, \dots, \bm{e}_n}$.
+  We can follow each base vector a certain distance from the base point to get coordinates that specify direction.
+  We can extend this to an arbitrary number of dimensions by increasing the number of base vectors.
+\end{definition}
+
+The Pythagorean theorem in multiple dimensions can be used to find distance between these two points.
+
+You can specify a geometric object by defining it as the set of points that satisfy an equation.
+
+\begin{example}{}
+  The unit circle is defined as the set of points in 2D that satisfy $x^2 + y^2 = 1$.
+\end{example}
+
+
+\subsection{Parametrization}
+
+\begin{definition}{Parametrization}
+  It maps complicated geometric objects to simpler objects (usually intervals) using analytic functions.
+\end{definition}
+
+\begin{example}
+  
+  $(x = \cos{\theta}, y = \sin{\theta})$ where $\theta \in [-\pi, \pi]$ is a map that maps $\theta$ to a pair of coordinates.
+  
+  $$
+  X(\theta) = (\cos \theta, \sin \theta)
+  $$
+
+  This is called a coordinate function.
+\end{example}
+
+\begin{example}
+  
+  The inverse of this map:
+  $$
+  \theta :=
+  \begin{cases}
+    \arccos{x} & y \geq 0 \\
+    - \arccos{x} & y < 0 \\
+  \end{cases}
+  $$
+
+  The inverse cosine is only defined over the interval $\theta \in (-\pi, \pi]$.
+\end{example}
+
+
+\begin{example}
+
+  $$x^2 + y^2 = r^2$$
+
+  We assume that $r>0$.
+  With the scaling variable $r$ we can transform the parametrization of the unit circle (just above) into an appropriate parametrization for a circle of an arbitray radius.
+
+  
+  $$
+  \theta \mapsto \pars{r \cos \theta, r \sin \theta}
+  $$
+
+  We can also define the inverse: the coordinate function.
+
+  $$
+  \pars{x, y} \mapsto \theta := \begin{cases}
+    \arccos \pars{x/\sqrt{x^2 + y^2}} & y \geq 0\\
+    -\arccos \pars{x/\sqrt{x^2 + y^2}} & y < 0 \\
+    \end{cases}
+  $$
+  
+\end{example}
+
+\begin{example}
+
+  We parametrize the unit sphere.
+
+  $$x^2 + y^2 + z^2 = 1$$
+
+We need two variables since its a circle (which is 1D - a line shaped into a circle) rotated.
+
+$$z = \cos \phi,\ \phi \in [0, \pi]$$
+
+This implies $$x^2 +y^2 = \sin^2 \phi$$
+
+$x$ and $y$ lie on a circle of radius $\sin \phi$.
+
+It's pretty easy to parametrize this
+
+$$x = \sin\phi \cos \theta$$
+
+$$y = \sin\phi \sin \theta$$
+
+$$\theta \in [-\pi, \pi]$$
+
+Here, $\phi$ is the angle between the point on the sphere and the z-axis.
+At the North and South poles, $\theta$ doesn't matter anymore.
+The parametrization function only holds on $\phi \neq 0,  \pi$.
+\end{example}
+
+
+Parametrization can be used to simplify all sorts of computationally tedious problems.
+
+\begin{example}
+  
+  We compute the tangent plane to a sphere.
+
+  In 1D calc, the tangent line to curve is the best local approximation of the curve.
+  For example, at a point $x_0$,  $y = \cos(x_0 + t) \approx \cos(x_0) - t \sin(x_0)$.
+
+  To make this easier suppose we have a fixed point: $(x_0, y_0, z_0) = \pars{\frac{1}{2}, \frac{1}{2}, \frac{1}{\sqrt{2}}}$ or $\phi = \frac{\pi}{4}, \theta = \frac{\pi}{4}$.
+
+  We can parametrize the shift in the angles with $\phi = \pi/4 + s, \theta = \pi/4 + t$. For $s, t \ll 1$ (very small changes), we can write
+
+  \begin{align*}
+    x &= \sin(\pi/4 + s)\cos(\pi/4 + t) \\
+      & \approx (\sin(\pi/4) + s \cos(\pi/4))(\cos(\pi/4) - t \sin(\pi/4)) \\
+      &= \frac{1}{2} (1+s)(1-t) \\
+    y &= \sin \pars{\pi/4 + s} \sin \pars{\pi/4 + t} \\
+      & \approx \pars{\sin \pi/4 + s \cos \pi/4}  \pars{\sin \pi/4 + t \cos \pi/4} \\
+      &= \frac{1}{2} \pars{1+s} \pars{1+t} \\
+    z &= \cos \pars{\pi/4 + s} \\
+      & \approx \frac{1}{\sqrt{2}} - s \frac{1}{\sqrt{2}} \\
+  \end{align*}
+
+  Note: taking a Taylor expansion and taking a derivative have a lot of things in common.
+\end{example}
+
+
+
+
+
+\subsection{Vector Space $\RR^n$}
+
+\begin{definition}{Vectors}
+  A vector is an ordered collection of numbers in $\RR$.
+
+  $$\bm{x} \in \RR^m : m \in \NN_* : \bm{x} \equiv (x_1, \dots, x_m)$$
+\end{definition}
+
+
+
+
+
+This means $\RR^n$ is a vector space.
+
+
+
+
+\begin{definition}{Vector Space}
+You can multiply a member of the space by a scalar and still be in the vector space.
+You can also add members of the same vector space and the resultant vector will still be in the vector space.
+
+Distributive property: if you multiply by a scalar $\alpha$ the resultant vector will still be in the vector space.
+
+Commutative property: the order in which you add vectors of a vector space doesn't matter; the sum will still be the same member of the vector space.
+
+Associative property: the order in which you group addition doesn't matter.
+\end{definition}
+
+The linear combination of members of a vector space is still in the vector space.
+Let V be an arbitrary subset of a vector space.
+$V \subset \RRN$
+
+\begin{definition}{Span}
+  $\spn(V)$
+
+  The span of a subspace is all possible linear combinations of vectors in $V$ - also a vector space.
+\end{definition}
+
+
+\begin{definition}{Set Equality}
+  If you want to prove that $A = B$, then it is sufficient to prove that both $A \subseteq B$ and $B \subseteq A$.
+\end{definition}
+
+
+\begin{theorem}{Span Identity Theorem}
+  Let $W = \spn(V)$, where $V \subset \RRN$.
+  Then $\spn(W) = W$.
+  \begin{proof}
+    Since $W = \spn V$, $V \subseteq W$.
+    Therefore, $\spn V \subseteq \spn W$.
+    Pick indices $i, j, k \in \NN $ such that $i + j = k$ and scalars $s_1, \cdots, s_k \in \RR$.
+    In addition, we also choose vectors $\bm{w}_1, \bm{w}_2 \in W$ and $\bm{v}_1, \cdots, \bm{v}_k \in V$, where
+    \begin{align*}
+      \bm{w}_1 &= \sum \limits_{n=0}^i s_n \bm{v}_n\\
+      \bm{w}_2 &= \sum \limits_{n=i+1}^{k} s_n \bm{v}_n\\
+    \end{align*}
+    
+    We attempt to write another distinct vector $\bm{b}$ (a generalized member of $\spn W$) that is a linear combination of these two vectors using scalars $t_1, t_2 \in \RR$.
+    $$
+    \bm{b} = t_1 \bm{w}_1 + t_2 \bm{w}_2 = \sum \limits_{n=1}^{n=i} \pars{t_1 s_n} \bm{v}_n  + \sum \limits_{n=i+1}^{n=k} \pars{t_2 s_n} \bm{v}_n
+    $$
+
+    However, we see that this is simply a linear combination of $\bm{v}_1, \cdots, \bm{v}_k$.
+    Therefore, $\bm{b} \in \spn V = W$.
+    Since $\bm{b}$ is really a formalized way to represent a member of $\spn W$, we can see that. Therefore, $\spn W \subseteq \spn V$.
+    However since we've already established that $\spn V \subseteq \spn W$, the only option is for $\spn V = \spn W$ or $\spn W = W$.
+
+    This proves it for the case of 2 vectors.
+    We need to generalize it to an arbitray number of vectors, after which we can complete the proof using induction.
+  \end{proof}
+\end{theorem}
+
+
+
+
+
+\begin{definition}{Standard Bases}
+  Standard bases are the vectors $\bm{e}_1, \cdots, \bm{e}_n \in \RRN$, where
+
+  \begin{align*}
+    \bm{e}_1 &= \pars{1, 0, \cdots, 0} \\
+    & \vdots \\
+    \bm{e}_n &= \pars{0, 0, \cdots, 1} \\
+  \end{align*}
+
+  It's sometimes useful to note that bases are the shortest way to write a span.
+\end{definition}
+
+
+\begin{theorem}{Standard Bases}
+  $\spn (e_1, \cdots, e_n) = \RR^m$
+  
+  All vectors in $\RR^m$ are linear combinations of the standard bases
+  \begin{proof}
+    Pick some scalars $\pars{t_1, \cdots t_m} \in \RR$.
+    It's easy to see that for a sufficient choice for $t_i$, we can create any vector $\bm{x} \in \RRM$.
+    $$
+    \bm{x} = \sum t_i \bm{e}_i
+    $$
+  \end{proof}
+\end{theorem}
+
+
+
+
+
+
+
+
+\recitation{September 2}
+Given a subset $V$, $\spn V$ is intuitively the set of linear combinations of the vectors in $V$.
+
+$\bm{x} \in \spn V \leftrightarrow \bm{x} = \sum \limits_i t_i \bm{v}_i$ where $t_i \in \RR$ and $\bm{v}_i \in V$.
+
+
+
+\begin{example}
+  
+  Suppose $V = \set{\pars{0, 0, 0}}$.
+  Then $\spn V$ only has one element since you can't make anything but $\bm{0}$ out of the zero-vector.
+\end{example}
+
+\begin{example}
+
+  Let $V = \set{\pars{1, 0, 0}}$.
+  $$
+  \spn V = \set{\pars{t, 0, 0} : t \in \RR}
+  $$
+\end{example}
+
+\begin{example}
+  
+  Let $\bm{v}_1 = \pars{1, 2, -3}$ and $\bm{v}_2 = \pars{1, -2, 1}$.
+  Can we find an equation that is satisfied by a vector $\bm{v} = \pars{x, y, z}$ if and only if $\bm{v} \in \spn \set{\bm{v}_1, \bm{v}_2}$?
+
+  Letting $s,t \in \RR$,
+  \begin{align*}
+    \bm{v} &\in \spn \set{\bm{v}_1, \bm{v}_2} \\
+    \bm{v} &= s \bm{v}_1 + t \bm{v}_2 \\
+           &= s \pars{1,2,-3} + t \pars{1, -2, 1} \\
+           &= \pars{s+t, 2s-2t, -3s+t} \\
+    x &= s+t \\
+    y &= 2s-2t \\
+    z &= -3s+t \\
+  \end{align*}
+
+  We solve the equations for $x$ and $y$ to see that
+  \begin{align*}
+    s &= \frac{1}{4} \pars{2x+y} \\
+    t &= \frac{1}{4} \pars{2x+y} \\
+  \end{align*}
+
+  Resubstituting into the equation for $z$, we see that
+  \begin{align*}
+    z &= -x-y \\
+    x+y+z &= 0 \\
+  \end{align*}
+
+  So $\bm{v} = \pars{x, y, z} \in \spn \set{\bm{v}_1, \bm{v}_2} \leftrightarrow z+x+y=0$
+\end{example}
+
+\begin{example}
+  
+  Let $\bm{v}_3 = \pars{-2, 1, 1}$.
+  Can you describe $\spn \set{\bm{v}_1, \bm{v}_2, \bm{v}_3}$? (vectors $\bm{v}_1, \bm{v}_2$ from previous example)?
+\end{example}
+
+\begin{example}
+  
+  Let $\bm{u} = \pars{1,2}, \bm{v} = \pars{-2, -4}, \bm{w} = \pars{7,14}$ be three vectors in $\RR^2$.
+  Show that $\bm{w} \in \spn \set{\bm{u}, \bm{v}}$.
+
+  We can write $\bm{w} = s \bm{u} + t \bm{v}$.
+  There are many such pairs of $(s,t)$, which are computationally trivial to solve for.
+
+  Another, quicker, approach is to see that $\bm{u} \in \spn \bm{v}$ and vice versa.
+  Therefore, $\spn \set{\bm{u}, \bm{v}} = \spn \bm{v} $.
+\end{example}
+
+\begin{example}
+
+  Let $\bm{u}_1, \bm{u}_2$ be orthogonal unit vectors.
+  Define
+  $$
+  \bm{v} := a \bm{u}_1 + b \bm{u}_2
+  $$
+  Find $\bm{v} \cdot \bm{u}_1$.
+
+  \begin{align*}
+    \bm{v} \cdot \bm{u}_1 &= a \bm{u}_1 \cdot \bm{u}_1 + b \bm{u}_2 \cdot \bm{u}_1 \\
+                          &= a + b \cdot 0 \\
+                          &= a \\
+  \end{align*}
+\end{example}
+
+\lecture{September 8}
+dot products!
+
+
+\recitation{September 9}
+
+\lecture{September 13}
+
+\lecture{September 15}
+
+\recitation{September 16}
+
+\lecture{September 20}
+
+\lecture{September 22}
+
+\recitation{September 23}
+
+\lecture{September 27}
+
+\lecture{September 29}
+
+\recitation{September 30}
+
+\lecture{October 4}
+
+\lecture{October 6}
+
+\recitation{October 7}
+
+\lecture{October 11}
+
+\lecture{October 13}
+
+\recitation{October 14}
+
+\lecture{October 18}
+
+\lecture{October 20}
+
+\recitation{October 21}
+
+\lecture{October 25}
+
+\lecture{October 27}
+
+\recitation{October 28}
+
+\lecture{November 1}
+
+\lecture{November 3}
+
+\recitation{November 4}
+
+\lecture{November 8}
+
+\lecture{November 10}
+
+\recitation{November 11}
+
+\lecture{November 15}
+
+\lecture{November 17}
+
+\recitation{November 18}
+
+\lecture{November 22}
+
+\lecture{November 29}
+
+\lecture{December 1}
+
+\recitation{December 2}
+
+\lecture{December 6}
+
+\lecture{December 8}
+
+\recitation{December 9}
+\lecture{December 13}
+
+
+
+\newpage
+\printbibliography
+
+
+\end{document}
