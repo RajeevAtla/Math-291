@@ -1,0 +1,105 @@
+\ProvidesPackage{rajeev}
+
+\RequirePackage{geometry}
+\RequirePackage{mathtools}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{titlesec}
+\RequirePackage{amsfonts}
+\RequirePackage{amsthm}
+\RequirePackage{bm}
+\RequirePackage{lastpage}
+\RequirePackage{fancyhdr}
+\RequirePackage[many]{tcolorbox}
+
+\DeclareOption{sans}{
+    \renewcommand{\familydefault}{\sfdefault}
+}
+\DeclareOption{mono}{
+    \renewcommand{\familydefault}{\ttdefault}
+}
+\DeclareOption{stdmargin}{
+    \geometry{margin = 1in, letterpaper, portrait}
+}
+\DeclareOption{noindent}{
+    \setlength{\parindent}{0cm}
+    \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+}
+\DeclareOption{stdindent}{
+    \setlength{\parindent}{0.5in}
+    \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+}
+
+
+
+\ExecuteOptions{stdmargin, stdindent}
+\ProcessOptions\relax
+
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+
+%sets of numbers
+\newcommand{\CC}{\mathbb C}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\RRN}{\mathbb{R}^n}
+\newcommand{\RRM}{\mathbb{R}^m}
+\newcommand{\ZZ}{\mathbb Z}
+
+%expected val/probability
+\renewcommand{\P}[1]{\mathbb P \left ( #1 \right)}
+\newcommand{\E}[1]{\mathbb E \left ( #1 \right)}
+
+%real/complex operators
+\newcommand{\Real}{\mathfrak{Re}}
+\newcommand{\Img}{\mathfrak{Im}}
+
+
+%delimiter stuff
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\pars}[1]{\left ( #1 \right)}
+\newcommand{\brak}[1]{\left [ #1 \right]}
+\newcommand{\set}[1]{ \left \{ #1 \right \} }
+\newcommand{\vect}[1]{\left \langle #1 \rangle \right}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\color{red}\S \thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\Large\bfseries}{\color{olive}\S \thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\Large\bfseries}{\color{blue}\S \thesubsubsection}{0.5em}{}
+
+%make everything more readable
+\everymath{\displaystyle}
+
+
+%for classes
+\newcounter{lecture}
+\newcommand{\lecture}[1]{\refstepcounter{lecture}\newpage\section{Lecture \thelecture : #1}}
+
+\newcounter{recitation}
+\newcommand{\recitation}[1]{\refstepcounter{recitation}\newpage\section{Recitation \therecitation : #1}}
+
+
+% linear algebra stuff
+\DeclareMathOperator{\spn}{span}
+
+
+% math classes in general
+
+% definitions
+\newtcolorbox[auto counter,number within=section]{definition}[2][]{colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries,title=Definition~\thetcbcounter: #2,#1}
+
+% theorems
+\newtcolorbox[auto counter, number within = section]{theorem}[2][]{colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries,title=Theorem~\thetcbcounter: #2,#1}
+
+% proofs
+\tcolorboxenvironment{proof}{blanker,breakable,left=5mm,before skip=10pt,after skip=10pt,borderline west={1mm}{0pt}{blue}}
+
+% examples
+\newtcolorbox[auto counter,number within=section]{example}[2][]{colback=green!5!white,colframe=green!75!black,fonttitle=\bfseries,title=Example~\thetcbcounter}
+
+
+
+\endinput
