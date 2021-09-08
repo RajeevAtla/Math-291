@@ -1,0 +1,247 @@
+\documentclass{article}
+
+\usepackage[sans, stdmargin, noindent]{../../rajeev}
+\usepackage{mathtools}
+
+\begin{document}
+
+Honors Pledge Statement: "The writeup of this submission is my own work alone".
+
+\section*{1.1}
+
+\begin{align*}
+  \pars{3, -1} &= s \pars{2, 1} + t \pars{1, 3} \\
+  \pars{3, -1} &= \pars{2s+t, s+3t} \\
+\end{align*}
+
+We turn this into a system of equations.
+$$
+\begin{cases}
+  2s + t = 3 \\
+  s+3t = -1 \\
+\end{cases}
+$$
+
+Solving, we find that \boxed{s=2, t=-1}.
+
+
+\section*{1.4}
+
+$$\norm{\bm{x}} = \sqrt{4^2 + 7^2 + \pars{-4}^2 + 1^2 + 2^2 + \pars{-2}^2} =  \boxed{3 \sqrt{10}}$$
+
+$$\norm{\bm{y}} = \sqrt{2^2 + 1^2 + 2^2 + 2^2 + \pars{-1}^2 + \pars{-1}^2} = \boxed{\sqrt{11}}$$
+
+\begin{align*}
+  \cos \theta &= \frac{\bm{x} \cdot \bm{y}}{\norm{\bm{x}} \norm{\bm{y}}} \\
+              &= \frac{4 \cdot 2 + 7 \cdot 1 + \pars{-4} \cdot 2 + 1 \cdot \pars{-1} + \pars{-2} \cdot \pars{-1}}{3 \sqrt{10} \cdot \sqrt{11}} \\
+              &= \frac{8}{3 \sqrt{110}} \\
+              &= \frac{4 \sqrt{110}}{165} \\
+  \theta & \approx \boxed{1.314} \\
+\end{align*}
+
+
+\section*{1.5}
+
+$$\norm{\bm{x}} = \sqrt{4^2 + 7^2 + 4^2} =  \boxed{9}$$
+
+$$\norm{\bm{y}} = \sqrt{2^2 + 1^2 + 2^2} =  \boxed{3}$$
+
+\begin{align*}
+  \cos \theta &= \frac{4 \cdot 2 + 7 \cdot 1 + 4 \cdot 2}{9 \cdot 3} \\
+              &= \frac{23}{27} \\
+  \theta &\approx \boxed{0.551} \\
+\end{align*}
+
+
+
+\section*{1.7}
+
+\subsection*{a}
+
+\begin{align*}
+  \bm{u}_1 \cdot \bm{u}_2 &= \frac{1}{81} \pars{1 \cdot 8 + \pars{-4} \cdot 4 + \pars{-8} \cdot \pars{-1}} = 0 \\
+  \bm{u}_2 \cdot \bm{u}_3 &= \frac{1}{81} \pars{8 \cdot 4 + 4 \cdot \pars{-7} + \pars{-1} \cdot 4} = 0 \\
+  \bm{u}_1 \cdot \bm{u}_3 &= \frac{1}{81} \pars{1 \cdot 4 + \pars{-4} \cdot \pars{-7} + \pars{-8} \cdot 4} = 0 \\
+\end{align*}
+
+Therefore, $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ is an orthonormal basis of $\RR^3$.
+
+\begin{align*}
+  \bm{u}_1 \times \bm{u}_2 &= \frac{1}{81} \pars{1, -4, -8} \times \pars{8, 4, -1} \\
+                           &= \frac{1}{81} \pars{36, -63, 36} \\
+                           &= \frac{1}{9} \pars{4, -7, 4} \\
+                           &= \bm{u}_3 \\
+\end{align*}
+Since $\bm{u}_1 \times \bm{u}_2 = \bm{u}_3$, $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ is a right-handed orthonormal basis of $\RR^3$.
+
+
+\subsection*{b}
+
+
+\begin{align*}
+  y_1 \bm{u}_1 + y_2 \bm{u}_2 + y_3 \bm{u}_3 &= \pars{10, 11, -11} \\
+  y_1 \pars{1, -4, -8} + y_2 \pars{8, 4, -1} + y_3 \pars{4, -7, 4} &= \pars{90, 99, -99} \\
+  \pars{y_1 + 8 y_2 + 4 y_3, -4 y_1 + 4 y_2 - 7 y_3, -8 y_1 - y_2 + 4y_3} &= \pars{90, 99, -99} \\
+\end{align*}
+
+We can solve this system to find \boxed{y_1 = 6, y_2 = 15, y_3 = -9}.
+
+\begin{align*}
+  \norm{\pars{y_1, y_2, y_3}} &= \sqrt{6^2 + 15^2 + \pars{-9}^2} \\
+                              &= \boxed{3 \sqrt{38}} \\
+  \norm{\pars{10, 11, -11}} &= \sqrt{10^2 + 11^2 + \pars{-11}^2} \\
+  &= \boxed{3 \sqrt{38}} \\
+\end{align*}
+
+
+
+\section*{1.14}
+
+
+\subsection*{a}
+
+Let $\bm{v}_1$ be the vector that passes through $\bm{a}_1$ and $\bm{a}_2$.
+Let $\bm{v}_2$ be the vector that passes through $\bm{a}_2$ and $\bm{a}_3$.
+Let $\bm{v}_3$ be the vector that passes through $\bm{b}_1$ and $\bm{b}_2$.
+Let $\bm{v}_4$ be the vector that passes through $\bm{b}_2$ and $\bm{b}_3$.
+
+\begin{align*}
+  \bm{v}_1 &= \pars{-2, 0, -4} \\
+  \bm{v}_2 &= \pars{3, -5, 1} \\
+  \bm{v}_3 &= \pars{0, -1, 1} \\
+  \bm{v}_4 &= \pars{-1, 1, 0} \\
+\end{align*}
+
+Since $\bm{v}_1, \bm{v}_2$ lie in the plane $P_1$, their cross product $\bm{n}_1$ is perpendicular to $P_1$.
+Likewise for $\bm{v}_3, \bm{v}_4, P_2, \bm{n}_2$, respectively.
+
+\begin{align*}
+  \bm{n}_1 &= \pars{20, -10, 10} \\
+  \bm{n}_2 &= \pars{1, 1, -1} \\
+\end{align*}
+
+We substitute into the standard form equation for a plane:
+
+\begin{align*}
+  P_1 : \bm{n}_1 \cdot \bm{r} + d_1 &= 0 \\
+  P_2 : \bm{n}_2 \cdot \bm{r} + d_2 &= 0 \\
+\end{align*}
+
+Substituting $\bm{a}_1$ and $\bm{b}_1$, respectively, we find that $d_1 = -10$ and $d_2 = -2$.
+After simplifying $P_1$,
+
+\begin{align*}
+  P_1 &: \boxed{2x - y + z - 1 = 0} \\
+  P_2 &: \boxed{x + y - z - 2 = 0} \\
+\end{align*}
+
+
+\subsection*{b}
+
+Adding the equations together, we see that the lines intersect at $x=3$.
+Substituting this back, we find
+
+$$
+z = y - 1
+$$
+
+Putting these results back into vector notation,
+
+$$
+\bm{r} = \pars{3, y, y-1} = \pars{3, 0, -1} + y \pars{1, 1, 1}
+$$
+
+Parametrizing using $t \in \RR$,
+
+$$
+\boxed{\bm{r} \pars{t} = \pars{3, 0, -1} + t \pars{1, 1, 1},\ t \in \RR}
+$$
+
+The distance between this line and $\bm{a}_1$ is
+
+\begin{align*}
+  \sqrt{\norm{\pars{3, 0, -1} - \pars{1, 2, 1}}^2 - \norm{\pars{\pars{3, 0, -1} - \pars{1, 2, 1}} \times \frac{1}{\sqrt{3}} \pars{1, 1, 1}}^2} &= \sqrt{\norm{\pars{2, -2, -2}}^2 - \frac{1}{3} \norm{\pars{3, -2, -2} \times \pars{1, 1, 1}}^2 } \\
+                                                                                                                                               &= \sqrt{\pars{2 \sqrt{3}}^2 - \frac{1}{3} \norm{\pars{0, 5, 5}}^2 } \\
+                                                                                                                                               &= \sqrt{12 - \frac{1}{3} \pars{50}} \\
+                                                                                                                                               &= \sqrt{12 - \frac{50}{3}} \\
+\end{align*}
+
+Something went wrong here...
+
+\subsection*{c}
+
+\begin{align*}
+  \bm{r} &= \bm{b}_1 + t \bm{a} \\
+\end{align*}
+
+Suppose the line is at $\bm{b}_1$ when $t=0$.
+In addition, at $t=1$, suppose the line is at $\bm{b}_2$.
+Then, $\bm{a} = \bm{b}_2 - \bm{b}_1 = \pars{0, -1, 1}$.
+Therefore,
+$$
+\bm{r} = \pars{1, 1, 0} + t \pars{0, -1, 1}
+$$
+
+Recall that a line in $\RR^3$ is simply the intersection of two nonparallel planes.
+
+
+\section*{1.15}
+Let the orthonormal basis be composed of vectors $\bm{a}, \bm{b}, \bm{c}$.
+We let
+$$\bm{c} := \frac{\bm{v}}{\norm{\bm{v}}} = \frac{1}{\sqrt{26}} \pars{1, 4, 3}$$
+
+In addition, we define
+$$
+\bm{w} := \pars{-4, 1, 0}
+$$
+
+Note that $\bm{w}$ and $\bm{c}$ are orthogonal.
+We normalize and let that be $\bm{a}$.
+
+$$
+\bm{a} := \frac{1}{\sqrt{17}} \pars{-4, 1, 0}
+$$
+
+To make $\bm{b}$ orthogonal to the other two vectors, we can compute the final vector:
+
+\begin{align*}
+  \bm{y} &= \bm{v} \times \bm{w} \\
+         &= \pars{-3, -12, 15} \\
+  \bm{b} &= \frac{\bm{y}}{\norm{\bm{y}}} \\
+  \bm{b} &= \frac{1}{\sqrt{378}} \pars{-3, -12, 15} \\
+\end{align*}
+
+
+\section*{1.16}
+
+Let the orthonormal basis be $\bm{u}_1, \bm{u}_2, \bm{u}_3$.
+
+\begin{align*}
+  \bm{u}_1 &= \frac{\bm{a}}{\norm{\bm{a}}} \\
+           &= \frac{1}{\sqrt{26}} \pars{1, 4, 3} \\
+  \bm{u}_2 &= \frac{\bm{b}}{\norm{\bm{b}}} \\
+           &= \frac{1}{\sqrt{14}} \pars{3, 2, 1} \\
+  \bm{c} &= \bm{a} \times \bm{b} \\
+           &= \pars{-2, 8, -10} \\
+  \bm{u}_3 &= \frac{\bm{c}}{\norm{\bm{c}}} \\
+  &= \frac{1}{\sqrt{168}} \pars{-2, 8, -10} \\
+\end{align*}
+
+\section*{1.17}
+
+\subsection*{a}
+
+Let $\pars{s, t} = \pars{0, 0}, \pars{0, 1}, \pars{1, 0}$ correspond to $\bm{p}_1, \bm{p}_2, \bm{p}_3$, respectively.
+We see that $\bm{x}_0 = \bm{p}_1 = \pars{-2, 0, 2}$.
+Further, we also see that $$\bm{v}_1 = \bm{p}_2 - \bm{p}_1 = \pars{3, -2, 0}$$ and $$\bm{v}_2 = \bm{p}_3 - \bm{p}_1 = \pars{5, -1, -4}$$
+
+$$
+\bm{x} \pars{s, t} = \pars{-2, 0, 2} + s \pars{3, -2, 0} + t \pars{5, -1, -4}
+$$
+
+\subsection*{b}
+
+Let $t=0$ at $\bm{x}_0$, so $\bm{z}_0 = \bm{x}_0$.
+
+
+\end{document}
