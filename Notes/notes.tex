@@ -67,7 +67,7 @@ Course is about calculus - multivariable calculus.
 Single variable calculus is assumed.
 
 The course is very dense and has a lot of material.
-As such, some nonessential/easy proofs/examples will be relegated to the textbook or recitation.
+As such, some nonessential/easy proofs/examples will be relegated to the textbook or recitations.
 
 
 \subsection{Why 3D Calc}
@@ -244,9 +244,6 @@ Commutative property: the order in which you add vectors of a vector space doesn
 Associative property: the order in which you group addition doesn't matter.
 \end{definition}
 
-The linear combination of members of a vector space is still in the vector space.
-Let V be an arbitrary subset of a vector space.
-$V \subset \RRN$
 
 \begin{definition}{Span}
   $\spn(V)$
@@ -784,9 +781,9 @@ Cross products are less relevant in higher dimensions:
   $$(\bm{x} - \bm{x}_0) \cdot \bm{a} = 0$$
 
   Parametrization:
-  $$x(s, t) = x_0 + s v_0 + t v_1$$
+  $$\bm{x} \pars{s, t} = \bm{x}_0 + s \bm{v}_0 + t \bm{v}_1$$
 
-  Here, $v_0, v_1$ are vectors in the plane that they help define.
+  Here, $\bm{v}_0, \bm{v}_1$ are vectors in the plane that they help define.
   
 \end{definition}
 
@@ -803,11 +800,12 @@ Cross products are less relevant in higher dimensions:
   We define an orthonormal basis $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ by assigning the unit vectors the following properties:
   \begin{align*}
     \bm{u}_i \cdot \bm{u}_j &= 0\, \forall i \neq j \\
-    \bm{u}_i \cdot \bm{u}_j &= 0\, \forall i = j \\
+    \bm{u}_i \cdot \bm{u}_j &= 1\, \forall i = j \\
   \end{align*}
 \end{definition}
 
-$u_1, u_2, u_3$
+For the following two definitions, we work with the orthonormal basis
+$$\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$$
 
 \begin{definition}{Right-Handed Orthonormal Bases}
   $$
