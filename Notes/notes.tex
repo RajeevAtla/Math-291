@@ -1,7 +1,7 @@
 
 %%%%%%%%%%% - Preamble
 \documentclass[11pt]{article}
-\usepackage[sans, stdmargin, noindent]{rajeev}
+\usepackage[sans, stdmargin, noindent]{../rajeev}
 \usepackage{lastpage}
 \usepackage[inline]{asymptote}
 \usepackage[normalem]{ulem}
@@ -417,16 +417,414 @@ $V \subset \RRN$
   \end{align*}
 \end{example}
 
+
+
+
 \lecture{September 8}
 
 \subsection{Dot Products}
+This section follows 1.1.5 of \cite{carlen}.
+
+The fundamental property of geometry is distance.
+
+\begin{definition}{Metric}
+      A metric $\rho$ takes a pair of points and returns a non-negative real number.
+
+      Properties:
+
+      \begin{align*}
+        \rho \pars{x, y} &= \rho \pars{y, x} \\
+        \rho \pars{x, y} &= 0 \leftrightarrow x = y \\
+        \rho \pars{x, z} & \leq \rho \pars{x, y} + \rho \pars{y, z} \\
+      \end{align*}
+
+      The last property is satisfied by the Euclidean norm using the triangular inequality.
+\end{definition}
+
+\begin{definition}{Euclidean Norm}
+  \cite{carlen} calls this Euclidean distance.
+
+  Suppose we have a vector $\bm{x} \in \RR^n$.
+  We define the Euclidean norm of that vector $\norm{\bm{x}}$ by
+  $$
+  \norm{\bm{x}} = \sqrt{\sum \limits_{j = 1}^n x_i^2}
+  $$
+\end{definition}
+
+\begin{example}
+
+  The norm in $\RR^2$ is
+  $$
+  \sqrt{x^2 + y^2}
+  $$
+\end{example}
+
+\begin{example}
+
+  The norm in $\RR^3$ is
+  $$
+  \sqrt{x^2 + y^2 + z^2}
+  $$
+\end{example}
+
+The norm of the difference between two vectors is their Euclidean distance.
+
+$$
+\norm{\bm{x} - \bm{y}} = \rho_E \pars{x, y}
+$$
+
+Some properties of the Euclidean distance:
+
+Another cool property is that for any $t \in \RR$,
+$$\norm{t \bm{x}} = \abs{t} \norm{\bm{x}}$$
+
+\begin{definition}{Unit(ary) vector}
+  
+
+  You can obtain a unit vector by dividing a vector by its norm.
+  Let $\bm{x} \in \RR^n$.
+  The unit vector $\bm{u}$ is
+
+  $$
+  \bm{u} := \frac{\bm{x}}{\norm{\bm{x}}}
+  $$
+
+  By definition (and it's also pretty easy to see this), $\norm{\bm{u}} = 1$ and $\bm{u}$ and $\bm{x}$ point in the same direction.
+\end{definition}
 
 
+
+\begin{definition}{Dot Product AKA Scalar Product}
+  Let $\bm{x}, \bm{y} \in \RR^n$.
+
+  The dot product of these two vectors is defined as
+
+  $$
+  \bm{x} \cdot \bm{y} = \sum \limits_{i=1}^{i=n} x_i y_i
+  $$
+  
+\end{definition}
+
+The norm is the square root of vector dotted with itself:
+$$
+\norm{\bm{x}} = \sqrt{\bm{x} \cdot \bm{x}}
+$$
+
+This is analogous to absolute value:
+$$
+\abs{x} = \sqrt{x \cdot x}
+$$
+
+
+The dot product is distrbutive:
+
+$$
+\bm{x} \cdot \pars{\bm{y} + \bm{z}} = \bm{x} \cdot \bm{y} + \bm{x} \cdot \bm{z}
+$$
+
+
+
+\begin{align*}
+  \norm{\bm{x} - \bm{y}}^2 &= \pars{\bm{x} - \bm{y}} \cdot \pars{\bm{x} - \bm{y}} \\
+                           &= \bm{x} \cdot \bm{x} + \bm{y} \cdot \bm{y} - 2 \bm{x} \cdot \bm{y} \\
+                           &= \norm{\bm{x}}^2 + \norm{\bm{y}}^2 - 2 \bm{x} \cdot \bm{y} \\
+\end{align*}
+
+
+\begin{center}
+  \begin{asy}
+    size(5cm);
+    draw((25, 30) -- (0, 0), arrow = Arrow(HookHead));
+    draw((25, 30) -- (50, 25), arrow = Arrow(HookHead));
+    draw((50, 25) -- (0, 0), arrow = Arrow(HookHead));
+
+    label("$\bm{x}$", (10, 15), NE);
+    label("$\bm{y}$", (39, 27.5), NW);
+    label("$\bm{x} - \bm{y}$", (25, 12.5), SE);
+    label("$\theta$", (25, 30), S);
+  \end{asy}
+\end{center}
+
+
+
+This bears a striking similarity to the law of cosines.
+We see in the triangle above that
+$$
+\norm{\bm{x} - \bm{y}}^2 = \norm{\bm{x}}^2 + \norm{\bm{y}}^2 - 2 \norm{\bm{x}} \norm{\bm{x}} \cos \theta
+$$
+
+
+This is how you see $\bm{x} \cdot \bm{y} = \norm{x} \norm{y} \cos \theta$.
+
+\begin{definition}{Angle Between Vectors}
+  
+  The angle $\theta$ is defined using the dot product:
+
+  $$
+  \theta = \arccos \frac{\bm{x} \cdot \bm{y}}{\norm{\bm{x}} \norm{\bm{y}}}
+  $$
+  
+  Note: we need to prove that this quotient is in the domain of the inverse cosine function, which we do using the Cauchy-Schwarz Inequality (below).
+\end{definition}
+
+\begin{theorem}{Cauchy-Schwarz Inequality}
+  $$\abs{\bm{x} \cdot \bm{y}} \leq \norm{\bm{x}} \norm{\bm{y}}$$
+
+  \begin{proof}
+    
+    Define two unitary versions of x and y, $\bm{a}$ and $\bm{b}$, respectively.
+    
+    \begin{align*}
+      \bm{a} & := \frac{\bm{x}}{\norm{\bm{x}}} \\
+      \bm{b} & := \frac{\bm{y}}{\norm{\bm{y}}} \\
+    \end{align*}
+
+    We have
+
+    \begin{align*}
+      \norm{\bm{a} - \bm{b}}^2 &= \norm{\bm{a}}^2 + \norm{\bm{b}}^2 - 2 \bm{a} \cdot \bm{b} \\
+      &= 2 \pars{1 - \bm{a} \cdot \bm{b}} \\
+    \end{align*}
+    Since $\norm{\bm{a} - \bm{b}}^2 \geq 0$, that means $\bm{a} \cdot \bm{b} \leq 1$.
+    Similarly,
+    
+    $$
+    \norm{\bm{a} + \bm{b}}^2 = 2 \pars{1 + \bm{a} \cdot \bm{b}}
+    $$
+
+    Therefore, $\bm{a} \cdot \bm{b} \geq -1$.
+    Putting these two inequalities together,
+    
+    $$
+    -1 \leq \bm{a} \cdot \bm{b} \leq 1
+    $$
+
+    By the definition of $\bm{a}, \bm{b}$, this proves the inequality.
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}{Triangle Inequality}
+  For any three vectors $\bm{x}, \bm{y}, \bm{z} \in \RR^n$,
+
+  $$
+  \norm{\bm{x} - \bm{z}} \geq \norm{\bm{x} - \bm{y}} + \norm{\bm{y} - \bm{z}} 
+  $$
+
+  \begin{proof}
+    Define:
+
+    \begin{align*}
+      \bm{a} & := \bm{x} - \bm{y} \\
+      \bm{b} & := \bm{z} - \bm{y} \\
+    \end{align*}
+
+    We then have
+
+    \begin{align*}
+      \norm{\bm{x} - \bm{z}}^2 &= \norm{\bm{a} - \bm{b}}^2 \\
+                               &= \norm{\bm{a}}^2 + \norm{\bm{b}}^2 - 2 \bm{a} \cdot \bm{b} \\
+      \text{(Cauchy-Schwartz)\,}         & \leq \norm{\bm{a}}^2 + \norm{\bm{b}}^2 + 2 \bm{a} \cdot \bm{b} \\
+                               &= \pars{\norm{\bm{a}} + \norm{\bm{b}}}^2 \\
+      \norm{\bm{x} - \bm{z}} & \leq \norm{\bm{a}} + \norm{\bm{b}} \\
+    \end{align*}
+    Using the definition of $\bm{a}, \bm{b}$ finishes the proof.
+  \end{proof}
+\end{theorem}
+
+\subsection{Cross Products in $\RR^3$}
+
+
+\begin{center}
+  \begin{asy}
+    size(5cm);
+    draw((0, 0) -- (15, 15), arrow = Arrow(HookHead));
+    draw((0, 0) -- (15, -15), arrow = Arrow(HookHead));
+    draw((15, 15) -- (30, 0), arrow = Arrow(HookHead), dashed);
+    draw((15, -15) -- (30, 0), arrow = Arrow(HookHead), dashed);
+    
+    label("$\bm{a}$", (7.5, 7.5), NW);
+    label("$\bm{b}$", (7.5, -7.5), SW);
+    label("$\theta$", (0, 0), E);
+  \end{asy}
+\end{center}
+
+The area of parallelogram is (from basic geometry)
+$$A = \norm{\bm{a}} \norm{\bm{b}} \sin \theta$$
+
+\begin{align*}
+  A^2 &= \norm{\bm{a}}^2 \norm{\bm{b}}^2 \sin^2 \theta \\
+      &= \norm{\bm{a}}^2 \norm{\bm{b}}^2 \pars{1 - \cos^2 \theta} \\
+      &= \norm{\bm{a}}^2 \norm{\bm{b}}^2 - \pars{\bm{a} \cdot \bm{b}}^2 \\
+\end{align*}
+
+Splitting $\bm{a}$ and $\bm{b}$ into components, we see that
+
+\begin{align*}
+  A^2 &= \pars{a_2 b_3 - a_3 b_2}^2 + \pars{a_3 b_1 - a_1 b_3}^2 + \pars{a_1 b_2 - a_2 b_1}^2 \\
+\end{align*}
+
+We define a useful operation to get this quantity, which looks like the norm of a vector: the cross product.
+
+\begin{definition}{Cross Product}
+  
+  $$
+  \bm{a} \times \bm{b} = \pars{a_2 b_3 - a_3 b_2} \bm{e}_1 + \pars{a_3 b_1 - a_1 b_3} \bm{e}_2 + \pars{a_1 b_2 - a_2 b_1} \bm{e}_3
+  $$
+
+  A more convenient way to remember this is
+  $$
+  \bm{a} \times \bm{b} =
+  \begin{vmatrix}
+    \bm{e}_1 & \bm{e}_2 & \bm{e}_3 \\
+    a_1 & a_2 & a_3 \\
+    b_1 & b_2 & b_3 \\
+  \end{vmatrix}
+  $$
+\end{definition}
+
+By construction,
+$$
+A = \norm{\bm{a} \times \bm{b}}
+$$
+
+
+It's easy to see with some algebra that the cross product is anticommutative, so
+$$
+\bm{b} \times \bm{a} = - \bm{a} \times \bm{b}
+$$
+
+
+\begin{example}
+
+  It's easy to see that
+  
+  $$\bm{a} \times \bm{a} = 0$$
+  
+  It follows that for all $t \in \RR$
+  
+  $$
+  \bm{a} \times \pars{t \bm{a}} = 0 
+  $$
+
+  This means that when parallel or anti-parallel vectors are crossed, the result is always 0.
+\end{example}
+
+
+
+\begin{theorem}
+  
+  $$
+  (\bm{a} \times \bm{b}) \cdot \bm{c} = (\bm{b} \times \bm{c}) \cdot \bm{a} = (\bm{c} \times \bm{a} ) \cdot \bm{b}
+  $$
+  Note the cylic permutations of $\pars{\bm{a}, \bm{b}, \bm{c}}$.
+  If acylic permutations are introduced, then there's a negative sign added.
+  
+  \begin{proof}
+    Trivial by algebraic expansion.
+  \end{proof}
+  
+\end{theorem}
+
+\begin{example}
+
+  $$ (\bm{a} \times \bm{b}) \cdot \bm{a} = \pars{ \bm{a} \times \bm{a}} \cdot \bm{b} = 0$$
+  This means $\bm{a} \times \bm{b}$ is orthogonal to $\bm{a}$.
+  
+\end{example}
+
+Cross products are less relevant in higher dimensions:
+\begin{itemize}
+\item In 4D, the cross product is a plane
+\item In 5D, the cross product is a sphere
+\end{itemize}
+
+
+
+\begin{theorem}{Lagrange's Identity}
+  
+  $$
+  \bm{a} \times \pars{\bm{b} \times \bm{c} } = \pars{\bm{a} \cdot \bm{c}} \bm{b} - \pars{\bm{a} \cdot \bm{b}} \bm{c}  $$
+
+    
+
+  \begin{proof}
+    
+  \end{proof}
+\end{theorem}
+
+\subsection{Lines and Planes in $\RR^3$}
+
+\subsubsection{Lines}
+
+\begin{definition}{Line}
+  A line is defined as the set of points $\bm{x}$ that satisfy
+  
+  $$
+  \bm{a} \times ( \bm{x} - \bm{x}_0) = 0
+  $$
+
+  Parametrization:
+  $$\bm{x}(t) = \bm{x}_0 + t \bm{a}$$
+
+  It's easy to see that this satisfies the definition of a line.
+\end{definition}
+
+
+
+
+\subsubsection{Planes}
+(insert airplane joke here)
+
+
+\begin{definition}{Planes}
+  A plane is the set of points $\bm{x}$ such that
+  
+  $$(\bm{x} - \bm{x}_0) \cdot \bm{a} = 0$$
+
+  Parametrization:
+  $$x(s, t) = x_0 + s v_0 + t v_1$$
+
+  Here, $v_0, v_1$ are vectors in the plane that they help define.
+  
+\end{definition}
+
+
+
+
+
+
+
+\subsection{Orthonormal Bases}
+
+\begin{definition}{Orthonormal Bases}
+  Define the unit vectors $\bm{u}_1, \bm{u}_2, \bm{u}_3$.
+  We define an orthonormal basis $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ by assigning the unit vectors the following properties:
+  \begin{align*}
+    \bm{u}_i \cdot \bm{u}_j &= 0\, \forall i \neq j \\
+    \bm{u}_i \cdot \bm{u}_j &= 0\, \forall i = j \\
+  \end{align*}
+\end{definition}
+
+$u_1, u_2, u_3$
+
+\begin{definition}{Right-Handed Orthonormal Bases}
+  $$
+  \bm{u}_1 \times \bm{u}_2 = \bm{u}_3
+  $$
+\end{definition}
+
+\begin{definition}{Left-Handed Orthonormal Bases}
+  $$
+  \bm{u}_1 \times \bm{u}_2 = - \bm{u}_3
+  $$
+\end{definition}
 
 
 \recitation{September 9}
 
 \lecture{September 13}
+
+1.1.6, 1.1.7, 1.1.8, 1.2.3
 
 \lecture{September 15}
 
