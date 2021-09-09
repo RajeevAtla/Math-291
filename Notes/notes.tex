@@ -110,10 +110,10 @@ You can specify a geometric object by defining it as the set of points that sati
 
 \begin{example}
   
-  $(x = \cos{\theta}, y = \sin{\theta})$ where $\theta \in [-\pi, \pi]$ is a map that maps $\theta$ to a pair of coordinates.
+  $\pars{x = \cos{\theta}, y = \sin{\theta}}$ where $\theta \in [-\pi, \pi]$ is a map that maps $\theta$ to a pair of coordinates.
   
   $$
-  X(\theta) = (\cos \theta, \sin \theta)
+  X\pars{\theta} = \pars{\cos \theta, \sin \theta}
   $$
 
   This is called a coordinate function.
@@ -165,7 +165,7 @@ You can specify a geometric object by defining it as the set of points that sati
 
 We need two variables since its a circle (which is 1D - a line shaped into a circle) rotated.
 
-$$z = \cos \phi,\ \phi \in [0, \pi]$$
+$$z = \cos \phi,\ \phi \in \brak{0, \pi}$$
 
 This implies $$x^2 +y^2 = \sin^2 \phi$$
 
@@ -177,7 +177,7 @@ $$x = \sin\phi \cos \theta$$
 
 $$y = \sin\phi \sin \theta$$
 
-$$\theta \in [-\pi, \pi]$$
+$$\theta \in \brak{-\pi, \pi}$$
 
 Here, $\phi$ is the angle between the point on the sphere and the z-axis.
 At the North and South poles, $\theta$ doesn't matter anymore.
@@ -191,22 +191,22 @@ Parametrization can be used to simplify all sorts of computationally tedious pro
   
   We compute the tangent plane to a sphere.
 
-  In 1D calc, the tangent line to curve is the best local approximation of the curve.
-  For example, at a point $x_0$,  $y = \cos(x_0 + t) \approx \cos(x_0) - t \sin(x_0)$.
+  In 1D calculus, the tangent line to curve is the best local approximation of the curve.
+  For example, at a point $x_0$,  $y = \cos \pars{x_0 + t} \approx \cos \pars{x_0} - t \sin \pars{x_0}$.
 
-  To make this easier suppose we have a fixed point: $(x_0, y_0, z_0) = \pars{\frac{1}{2}, \frac{1}{2}, \frac{1}{\sqrt{2}}}$ or $\phi = \frac{\pi}{4}, \theta = \frac{\pi}{4}$.
+  To make this easier suppose we have a fixed point: $\pars{x_0, y_0, z_0} = \pars{\frac{1}{2}, \frac{1}{2}, \frac{1}{\sqrt{2}}}$ or $\phi = \frac{\pi}{4}, \theta = \frac{\pi}{4}$.
 
-  We can parametrize the shift in the angles with $\phi = \pi/4 + s, \theta = \pi/4 + t$. For $s, t \ll 1$ (very small changes), we can write
+  We can parametrize the shift in the angles with $\phi = \frac{\pi}{4} + s, \theta = \frac{\pi}{4} + t$. For $s, t \ll 1$ (very small changes), we can write
 
   \begin{align*}
-    x &= \sin(\pi/4 + s)\cos(\pi/4 + t) \\
-      & \approx (\sin(\pi/4) + s \cos(\pi/4))(\cos(\pi/4) - t \sin(\pi/4)) \\
-      &= \frac{1}{2} (1+s)(1-t) \\
-    y &= \sin \pars{\pi/4 + s} \sin \pars{\pi/4 + t} \\
-      & \approx \pars{\sin \pi/4 + s \cos \pi/4}  \pars{\sin \pi/4 + t \cos \pi/4} \\
+    x &= \sin \pars{ \frac{\pi}{4} + s} \cos \pars{ \frac{\pi}{4} + t} \\
+      & \approx \pars{\sin \pars{\frac{\pi}{4}} + s \cos \pars{\frac{\pi}{4}}} \pars{\cos \pars{\frac{\pi}{4}} - t \sin \pars{\frac{\pi}{4}}} \\
+      &= \frac{1}{2} \pars{1+s} \pars{1-t} \\
+    y &= \sin \pars{\frac{\pi}{4} + s} \sin \pars{ \frac{\pi}{4} + t} \\
+      & \approx \pars{\sin \pars{\frac{\pi}{4}} + s \cos \pars{\frac{\pi}{4}}}  \pars{\sin \pars{\frac{\pi}{4}} + t \cos \pars{\frac{\pi}{4}}} \\
       &= \frac{1}{2} \pars{1+s} \pars{1+t} \\
-    z &= \cos \pars{\pi/4 + s} \\
-      & \approx \frac{1}{\sqrt{2}} - s \frac{1}{\sqrt{2}} \\
+    z &= \cos \pars{\frac{\pi}{4} + s} \\
+      & \approx \frac{1}{\sqrt{2}} - \frac{s}{\sqrt{2}} \\
   \end{align*}
 
   Note: taking a Taylor expansion and taking a derivative have a lot of things in common.
@@ -255,9 +255,7 @@ $V \subset \RRN$
 \end{definition}
 
 
-\begin{definition}{Set Equality}
-  If you want to prove that $A = B$, then it is sufficient to prove that both $A \subseteq B$ and $B \subseteq A$.
-\end{definition}
+
 
 
 \begin{theorem}{Span Identity Theorem}
@@ -284,7 +282,7 @@ $V \subset \RRN$
     However since we've already established that $\spn V \subseteq \spn W$, the only option is for $\spn V = \spn W$ or $\spn W = W$.
 
     This proves it for the case of 2 vectors.
-    We need to generalize it to an arbitray number of vectors, after which we can complete the proof using induction.
+    We need to generalize it to an arbitrary number of vectors, after which we can complete the proof using induction.
   \end{proof}
 \end{theorem}
 
@@ -417,6 +415,10 @@ $V \subset \RRN$
   \end{align*}
 \end{example}
 
+
+\begin{definition}{Set Equality}
+  If you want to prove that $A = B$, then it is sufficient to prove that both $A \subseteq B$ and $B \subseteq A$.
+\end{definition}
 
 
 
