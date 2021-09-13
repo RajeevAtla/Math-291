@@ -11,6 +11,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{fancyhdr}
 \RequirePackage[many]{tcolorbox}
+\RequirePackage{listings}
 
 \DeclareOption{sans}{
     \renewcommand{\familydefault}{\sfdefault}
@@ -71,8 +72,13 @@
 \titleformat{\subsection}{\normalfont\Large\bfseries}{\color{olive}\S \thesubsection}{0.5em}{}
 \titleformat{\subsubsection}{\normalfont\Large\bfseries}{\color{blue}\S \thesubsubsection}{0.5em}{}
 
-%make everything more readable
+%make every math thing more readable
 \everymath{\displaystyle}
+
+% for code blocks
+\lstdefinestyle{mystyle}{
+  numbers=left
+}
 
 
 %for classes
@@ -82,6 +88,8 @@
 \newcounter{recitation}
 \newcommand{\recitation}[1]{\refstepcounter{recitation}\newpage\section{Recitation \therecitation : #1}}
 
+% for homework
+\newcommand{\problem}[1]{\newpage\section*{Problem #1}}
 
 % linear algebra stuff
 \DeclareMathOperator{\spn}{span}

@@ -15,6 +15,7 @@
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
 
+
 \usepackage{hyperref}
 
 
@@ -46,7 +47,7 @@
     \item Last taught 2019-2020 school year
     \end{itemize}
   \item Last updated August 2019
-  \item Has a lot of errors :^(
+  \item Has a lot of errors
   \end{itemize}
 \item Additional resources
   \begin{itemize}
@@ -69,7 +70,7 @@ Single variable calculus is assumed.
 
 The course is very dense and has a lot of material.
 As such, some nonessential/easy proofs/examples will be relegated to the textbook or recitations.
-
+In addition, there's a lot of material and this class is mostly for masochists.
 
 \subsection{Why 3D Calc}
 The world is 3D.
@@ -313,12 +314,6 @@ Associative property: the order in which you group addition doesn't matter.
     $$
   \end{proof}
 \end{theorem}
-
-
-
-
-
-
 
 
 \recitation{September 2}
@@ -822,6 +817,91 @@ $$\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$$
 
 
 \recitation{September 9}
+
+\subsection{Lines and Planes}
+
+\subsubsection{Planes}
+
+
+
+$$
+\bm{a} \cdot \pars{\bm{x} - \bm{x}_0} = 0
+$$
+
+If you take a vector lying in the plane, it has to be perpendicular to $\bm{a}$.
+(draw picture)
+
+If you take two vectors that aren't parallel, their span is the plane that they are in.
+This naive plane will go through the origin.
+However, you also need planes that don't go through the origin.
+Therefore, you can also write the plane as
+
+$$
+\bm{x} (s, t) = s \bm{v}_1 + t \bm{v}_2 + \bm{x}_0
+$$
+
+\subsubsection{Lines}
+
+$$
+\bm{a} \times \pars{\bm{x} - \bm{x}_0} = 0
+$$
+
+All vectors on the line must be parallel to $\bm{a}$.
+
+\subsection{Orthonormal Bases}
+
+(Example 11 from the textbook)
+
+\subsection{}
+
+
+\begin{example}
+  
+  Example 1.12 of \cite{carlen}
+  $$
+  \bm{a} = \pars{1, 2, 3} \\
+  \bm{x}_0 = \pars{3, 2, 1}
+  $$
+  (FINISH)
+  Take dot product and simplify to get
+  $$
+  x + 2y + 3z = 10
+  $$
+\end{example}
+
+
+\begin{example}
+  
+  $$
+  \bm{a} \cdot \bm{x} = d
+  $$
+
+  Let $\bm{a} = \pars{1, 2, 1 }$ and $d=10$.
+
+  We parametrize the set of solutions:
+  (FINISH)
+
+  We'll be parametrizing planes when we take triple surface integrals etc.
+\end{example}
+
+
+\begin{example}
+  
+  Are these points on the same plane?
+
+  \begin{align*}
+    \bm{p}_1   &=\pars{1, 2, 3} \\
+    \bm{p}_2 &=\pars{3, 2, 1} \\
+    \bm{p}_3 &=\pars{1, 3, 2} \\
+    \bm{p}_4 &=\pars{4, -1, 3} \\
+  \end{align*}
+
+  We immediately notice that $x+y+z=6$ for all 4 points.
+  Therefore the answer is yes!
+
+  Another, slower, way to do this is to find two vectors that lie in the plane, find their normal vector, and construct a plane from it.
+\end{example}
+
 
 \lecture{September 13}
 

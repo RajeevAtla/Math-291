@@ -2,12 +2,25 @@
 
 \usepackage[sans, stdmargin, noindent]{../../rajeev}
 \usepackage{mathtools}
+\usepackage{dirtytalk}
+
+\pagestyle{fancy}
+\rhead{\today}
+\lhead{Math 291H HW \#1}
 
 \begin{document}
 
-Honors Pledge Statement: "The writeup of this submission is my own work alone".
+\begin{center}
+    \Large \textbf{Math 291H Homework \#1}
+\end{center}
+\begin{center}
+    \Large Rajeev Atla
+\end{center}
 
-\section*{1.1}
+
+Honors Pledge Statement: \say{The writeup of this submission is my own work alone.}
+
+\problem{1.1}
 
 \begin{align*}
   \pars{3, -1} &= s \pars{2, 1} + t \pars{1, 3} \\
@@ -25,22 +38,22 @@ $$
 Solving, we find that \boxed{s=2, t=-1}.
 
 
-\section*{1.4}
+\problem{1.4}
 
-$$\norm{\bm{x}} = \sqrt{4^2 + 7^2 + \pars{-4}^2 + 1^2 + 2^2 + \pars{-2}^2} =  \boxed{3 \sqrt{10}}$$
+$$\norm{\bm{x}} = \sqrt{4^2 + 7^2 + \pars{-4}^2 + 1^2 + 2^2 + \pars{-2}^2} =  \boxed{\sqrt{15}}$$
 
 $$\norm{\bm{y}} = \sqrt{2^2 + 1^2 + 2^2 + 2^2 + \pars{-1}^2 + \pars{-1}^2} = \boxed{\sqrt{11}}$$
 
 \begin{align*}
   \cos \theta &= \frac{\bm{x} \cdot \bm{y}}{\norm{\bm{x}} \norm{\bm{y}}} \\
-              &= \frac{4 \cdot 2 + 7 \cdot 1 + \pars{-4} \cdot 2 + 1 \cdot \pars{-1} + \pars{-2} \cdot \pars{-1}}{3 \sqrt{10} \cdot \sqrt{11}} \\
-              &= \frac{8}{3 \sqrt{110}} \\
-              &= \frac{4 \sqrt{110}}{165} \\
-  \theta & \approx \boxed{1.314} \\
+              &= \frac{4 \cdot 2 + 7 \cdot 1 + \pars{-4} \cdot 2 + 1 \cdot \pars{-1} + \pars{-2} \cdot \pars{-1}}{\sqrt{15} \cdot \sqrt{11}} \\
+              &= \frac{8}{\sqrt{165}} \\
+              &= \frac{8 \sqrt{165}}{165} \\
+  \theta &= \boxed{\arccos{\frac{8 \sqrt{165}}{165}}} \\
 \end{align*}
 
 
-\section*{1.5}
+\problem{1.5}
 
 $$\norm{\bm{x}} = \sqrt{4^2 + 7^2 + 4^2} =  \boxed{9}$$
 
@@ -49,12 +62,12 @@ $$\norm{\bm{y}} = \sqrt{2^2 + 1^2 + 2^2} =  \boxed{3}$$
 \begin{align*}
   \cos \theta &= \frac{4 \cdot 2 + 7 \cdot 1 + 4 \cdot 2}{9 \cdot 3} \\
               &= \frac{23}{27} \\
-  \theta &\approx \boxed{0.551} \\
+  \theta &= \boxed{\arccos \frac{23}{27}} \\
 \end{align*}
 
 
 
-\section*{1.7}
+\problem{1.7}
 
 \subsection*{a}
 
@@ -64,7 +77,7 @@ $$\norm{\bm{y}} = \sqrt{2^2 + 1^2 + 2^2} =  \boxed{3}$$
   \bm{u}_1 \cdot \bm{u}_3 &= \frac{1}{81} \pars{1 \cdot 4 + \pars{-4} \cdot \pars{-7} + \pars{-8} \cdot 4} = 0 \\
 \end{align*}
 
-Therefore, $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ is an orthonormal basis of $\RR^3$.
+Therefore, $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ \emph{is} an orthonormal basis of $\RR^3$.
 
 \begin{align*}
   \bm{u}_1 \times \bm{u}_2 &= \frac{1}{81} \pars{1, -4, -8} \times \pars{8, 4, -1} \\
@@ -72,7 +85,7 @@ Therefore, $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ is an orthonormal basis of $\RR^
                            &= \frac{1}{9} \pars{4, -7, 4} \\
                            &= \bm{u}_3 \\
 \end{align*}
-Since $\bm{u}_1 \times \bm{u}_2 = \bm{u}_3$, $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ is a right-handed orthonormal basis of $\RR^3$.
+Since $\bm{u}_1 \times \bm{u}_2 = \bm{u}_3$, $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ is a \emph{right-handed} orthonormal basis of $\RR^3$.
 
 
 \subsection*{b}
@@ -95,7 +108,7 @@ We can solve this system to find \boxed{y_1 = 6, y_2 = 15, y_3 = -9}.
 
 
 
-\section*{1.14}
+\problem{1.14}
 
 
 \subsection*{a}
@@ -113,11 +126,11 @@ Let $\bm{v}_4$ be the vector that passes through $\bm{b}_2$ and $\bm{b}_3$.
 \end{align*}
 
 Since $\bm{v}_1, \bm{v}_2$ lie in the plane $P_1$, their cross product $\bm{n}_1$ is perpendicular to $P_1$.
-Likewise for $\bm{v}_3, \bm{v}_4, P_2, \bm{n}_2$, respectively.
+Likewise for $\bm{v}_3, \bm{v}_4, P_2, \text{and }\bm{n}_2$, respectively.
 
 \begin{align*}
   \bm{n}_1 &= \pars{20, -10, 10} \\
-  \bm{n}_2 &= \pars{1, 1, -1} \\
+  \bm{n}_2 &= \pars{-1, -1, -1} \\
 \end{align*}
 
 We substitute into the standard form equation for a plane:
@@ -127,65 +140,94 @@ We substitute into the standard form equation for a plane:
   P_2 : \bm{n}_2 \cdot \bm{r} + d_2 &= 0 \\
 \end{align*}
 
-Substituting $\bm{a}_1$ and $\bm{b}_1$, respectively, we find that $d_1 = -10$ and $d_2 = -2$.
-After simplifying $P_1$,
+Substituting $\bm{a}_1$ and $\bm{b}_1$, respectively, we find that $d_1 = -10$ and $d_2 = 3$.
+After simplifying,
 
 \begin{align*}
   P_1 &: \boxed{2x - y + z - 1 = 0} \\
-  P_2 &: \boxed{x + y - z - 2 = 0} \\
+  P_2 &: \boxed{x + y + z - 3 = 0} \\
 \end{align*}
 
 
 \subsection*{b}
 
-Adding the equations together, we see that the lines intersect at $x=3$.
-Substituting this back, we find
+Adding and subtracting the two equations, respectively
 
 $$
-z = y - 1
+\begin{cases}
+  x - 2y + 2 = 0 \Longleftrightarrow y = \frac{1}{2} x + 1 \\
+  3x + 2z - 4 = 0 \Longleftrightarrow z = - \frac{3}{2} x + 2 \\
+\end{cases}
 $$
 
-Putting these results back into vector notation,
-
-$$
-\bm{r} = \pars{3, y, y-1} = \pars{3, 0, -1} + y \pars{1, 1, 1}
-$$
-
-Parametrizing using $t \in \RR$,
-
-$$
-\boxed{\bm{r} \pars{t} = \pars{3, 0, -1} + t \pars{1, 1, 1},\ t \in \RR}
-$$
-
-The distance between this line and $\bm{a}_1$ is
+Letting $t \in \RR$, we can write
 
 \begin{align*}
-  \sqrt{\norm{\pars{3, 0, -1} - \pars{1, 2, 1}}^2 - \norm{\pars{\pars{3, 0, -1} - \pars{1, 2, 1}} \times \frac{1}{\sqrt{3}} \pars{1, 1, 1}}^2} &= \sqrt{\norm{\pars{2, -2, -2}}^2 - \frac{1}{3} \norm{\pars{3, -2, -2} \times \pars{1, 1, 1}}^2 } \\
-                                                                                                                                               &= \sqrt{\pars{2 \sqrt{3}}^2 - \frac{1}{3} \norm{\pars{0, 5, 5}}^2 } \\
-                                                                                                                                               &= \sqrt{12 - \frac{1}{3} \pars{50}} \\
-                                                                                                                                               &= \sqrt{12 - \frac{50}{3}} \\
+  \bm{x} \pars{t} &= \pars{t, \frac{1}{2} t + 1, - \frac{3}{2} t + 2} \\
+  \bm{x} \pars{t} &= \boxed{\pars{0, 1, 2} + t \pars{0, \frac{1}{2}, - \frac{3}{2}}} \\
 \end{align*}
 
-Something went wrong here...
+This is of the form $\bm{x} \pars{t} = \bm{x}_0 + t \bm{v}$.
+To find the distance, we must first normalize $\bm{v}$.
+
+\begin{align*}
+  \bm{u} &= \frac{\bm{v}}{\norm{\bm{v}}} \\
+  &= \frac{\sqrt{10}}{5} \pars{0, \frac{1}{2}, - \frac{3}{2}} \\
+\end{align*}
+
+Suppose the point on the line closest to $\bm{a}_1$ is $\bm{p}$.
+The shortest distance is then
+
+\begin{align*}
+  \norm{\bm{p} - \bm{a}_1}^2 &= \norm{\bm{x}_0 - \bm{a}_1}^2 - \norm{\pars{\bm{x}_0 - \bm{a}_1} \cdot \bm{u}}^2 \\
+                             &= \norm{\pars{0, 1, 2} - \pars{1, 2, 1}}^2 - \frac{10}{25} \abs{\pars{\pars{0, 1, 2} - \pars{1, 2, 1}} \cdot \pars{0, \frac{1}{2}, - \frac{3}{2}}}^2 \\
+                             &= \norm{\pars{-1, -1, 1}}^2 - \frac{2}{5} \abs{\pars{-1, -1, 1} \cdot \pars{0, \frac{1}{2}, - \frac{3}{2}}} \\
+                             &= 3 - \frac{2}{5} \pars{2} \\
+                             &= \frac{13}{5} \\
+  \norm{\bm{p} - \bm{a}_1} &= \boxed{\sqrt{\frac{13}{5}}} \\
+\end{align*}
 
 \subsection*{c}
 
 \begin{align*}
-  \bm{r} &= \bm{b}_1 + t \bm{a} \\
+  \bm{x} &= \bm{b}_1 + t \bm{a} \\
 \end{align*}
 
 Suppose the line is at $\bm{b}_1$ when $t=0$.
 In addition, at $t=1$, suppose the line is at $\bm{b}_2$.
 Then, $\bm{a} = \bm{b}_2 - \bm{b}_1 = \pars{0, -1, 1}$.
 Therefore,
+
 $$
-\bm{r} = \pars{1, 1, 0} + t \pars{0, -1, 1}
+\bm{x} = \pars{1, 1, 0} + t \pars{0, -1, 1}
 $$
 
-Recall that a line in $\RR^3$ is simply the intersection of two nonparallel planes.
+The vector equation of the line is therefore
 
+\begin{align*}
+  \bm{a} \times \pars{\bm{x} - \bm{b}_1} &= 0 \\
+  \pars{0, -1, 1} \times \pars{\bm{x} - \pars{1, 1, 0}} &= 0 \\
+  \pars{0, -1, 1} \times \pars{x - 1, y - 1, z} &= 0 \\
+  \pars{-y-z+1, x-1, x-1} &=0 \\
+\end{align*}
 
-\section*{1.15}
+Clearly, $x=1$ from the $\bm{e}_2$ and $\bm{e}_3$ components of this equation.
+In addition, $y + z = 1$ from the $\bm{e}_1$ component.
+
+The equation for $P_1$ is $2x-y+z=1$.
+Substituting $x=1$, we have
+
+$$
+\begin{cases}
+  y + z = 1 \\
+  y - z = 1 \\
+\end{cases}
+$$
+
+Solving, we find $y=1$ and $z=0$.
+Finally, the point of intersection is $\boxed{\pars{1, 1, 0}}$.
+
+\problem{1.15}
 Let the orthonormal basis be composed of vectors $\bm{a}, \bm{b}, \bm{c}$.
 We let
 $$\bm{c} := \frac{\bm{v}}{\norm{\bm{v}}} = \frac{1}{\sqrt{26}} \pars{1, 4, 3}$$
@@ -196,7 +238,7 @@ $$
 $$
 
 Note that $\bm{w}$ and $\bm{c}$ are orthogonal.
-We normalize and let that be $\bm{a}$.
+We normalize and let the resultant unit vector be $\bm{a}$.
 
 $$
 \bm{a} := \frac{1}{\sqrt{17}} \pars{-4, 1, 0}
@@ -205,14 +247,14 @@ $$
 To make $\bm{b}$ orthogonal to the other two vectors, we can compute the final vector:
 
 \begin{align*}
-  \bm{y} &= \bm{v} \times \bm{w} \\
+  \bm{y} & := \bm{v} \times \bm{w} \\
          &= \pars{-3, -12, 15} \\
   \bm{b} &= \frac{\bm{y}}{\norm{\bm{y}}} \\
   \bm{b} &= \frac{1}{\sqrt{378}} \pars{-3, -12, 15} \\
 \end{align*}
 
 
-\section*{1.16}
+\problem{1.16}
 
 Let the orthonormal basis be $\bm{u}_1, \bm{u}_2, \bm{u}_3$.
 
@@ -227,7 +269,7 @@ Let the orthonormal basis be $\bm{u}_1, \bm{u}_2, \bm{u}_3$.
   &= \frac{1}{\sqrt{168}} \pars{-2, 8, -10} \\
 \end{align*}
 
-\section*{1.17}
+\problem{1.17}
 
 \subsection*{a}
 
@@ -241,7 +283,99 @@ $$
 
 \subsection*{b}
 
-Let $t=0$ at $\bm{x}_0$, so $\bm{z}_0 = \bm{x}_0$.
+Let $u=0$ at $\bm{x}_0$, so $\bm{z}_0 = \bm{x}_0 = \boxed{\pars{1, 4, -2}}$.
+Letting $u=1$ at $\bm{x}_1$ lets us see that $\bm{w} = \bm{z}_1 - \bm{z}_0 = \boxed{\pars{-1, -7, 3}}$.
 
+\subsection*{c}
+We can compute the normal vector by
+
+\begin{align*}
+  \bm{n} &= \bm{v}_1 \times \bm{v}_2 \\
+         &= \pars{3, -2, 0} \times \pars{5, -1, -4} \\
+         &= \pars{8, 12, 7} \\
+\end{align*}
+
+We know that $\bm{n} \cdot \bm{x} + d = 0$ is the general vector equation for the plane.
+Substituting $\bm{x} = \bm{p}_1$, we see that $d=2$.
+We can then expand,
+$$
+\boxed{8x + 12y + 7z + 2 =0}
+$$
+
+\subsection*{d}
+
+The general vector equation for a line is
+\begin{align*}
+  \bm{w} \times \pars{\bm{z} - \bm{z}_0} &= 0 \\
+  \pars{-1, -7, 3} \times \pars{\pars{x, y, z} - \pars{1, 4, -2}} &= 0 \\
+  \pars{-1, -7, 3} \times \pars{x - 1, y - 4, z + 2} &= 0 \\
+  \pars{-2 - 3y - 7z, -1+3x+z, -3 + 7x - y} &= 0 \\
+\end{align*}
+
+We therefore have the system,
+
+$$
+\begin{cases}
+  3y + 7z = -2 \\
+  3x + z = 1 \\
+  7x - y = 3 \\
+\end{cases}
+$$
+
+\subsection*{e}
+Solving for $y$ in the last equation,
+
+$$
+y = 7x - 3
+$$
+
+Substituting into the equation for the plane,
+
+$$
+\begin{cases}
+  92x + 7z + 2 = 0 \\
+  3x + z = 1 \\
+\end{cases}
+$$
+
+Solving and resubstituting, we find $\boxed{\pars{\frac{24}{71}, - \frac{24}{71}, - \frac{10}{71}}}$.
+
+\subsection*{f}
+
+We must first normalize $\bm{w}$.
+
+\begin{align*}
+  \bm{u} &= \frac{\bm{w}}{\norm{\bm{w}}} \\
+  &= \frac{1}{\sqrt{59}} \pars{-1, -7, 3} \\
+\end{align*}
+
+Suppose the point on the line closest to $\bm{p}_1$ is $\bm{q}$.
+
+\begin{align*}
+  \norm{\bm{p}_1 - \bm{q}} &= \norm{\pars{\bm{x}_0 - \bm{p}_1} \times \bm{u}} \\
+                           &= \frac{1}{\sqrt{59}} \norm{\pars{\pars{1, 4, -2} - \pars{-1, -3, 0}} \times \pars{-1, -7, 3}} \\
+                           &= \frac{1}{\sqrt{59}} \norm{\pars{2, 7, -2} \times \pars{-1, -7, 3}} \\
+                           &= \frac{1}{\sqrt{59}} \norm{\pars{7, -4, -7}} \\
+                           &= \boxed{\sqrt{\frac{114}{59}}} \\
+\end{align*}
+
+
+\subsection*{g}
+
+We must first normalize $\bm{n}$.
+
+\begin{align*}
+  \bm{u} &= \frac{\bm{n}}{\norm{\bm{n}}} \\
+  &= \frac{1}{\sqrt{257}} \pars{8, 12, 7} \\
+\end{align*}
+
+The distance is then
+
+\begin{align*}
+  \abs{\pars{\bm{x}_0 - \bm{z}_0} \cdot \bm{u}} &= \frac{1}{\sqrt{257}} \abs{\pars{-2, 0, 2} - \pars{1, 4, -2} \cdot \pars{8, 12, 7}} \\
+                                                &= \frac{1}{\sqrt{257}} \abs{\pars{-3, -4, 4} \cdot \pars{8, 12, 7}} \\
+                                                &= \frac{1}{\sqrt{257}} \abs{-44} \\
+                                                &= \boxed{\frac{44}{\sqrt{257}}} \\
+\end{align*}
 
 \end{document}
