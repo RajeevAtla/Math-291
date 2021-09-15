@@ -14,8 +14,6 @@
 \usepackage{amssymb}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
-
-
 \usepackage{hyperref}
 
 
@@ -23,6 +21,7 @@
 \rhead{Last Updated: \today}
 \lhead{Math 291 Notes}
 
+\lfoot{\copyright 2021, Rajeev Atla}
 
 \setlength{\headheight}{13.6pt}
 
@@ -270,36 +269,10 @@ Associative property: the order in which you group addition doesn't matter.
       \bm{w}_2 &= \sum \limits_{n=i+1}^{k} s_n \bm{v}_n\\
     \end{align*}
     
-    We attempt to write another distinct vector $\bm{b}$ (a generalized member of $\spn W$) that is a linear combination of these two vectors using scalars $t_1, t_2 \in \RR$.
-    $$
-    \bm{b} = t_1 \bm{w}_1 + t_2 \bm{w}_2 = \sum \limits_{n=1}^{n=i} \pars{t_1 s_n} \bm{v}_n  + \sum \limits_{n=i+1}^{n=k} \pars{t_2 s_n} \bm{v}_n
-    $$
-
-    However, we see that this is simply a linear combination of $\bm{v}_1, \cdots, \bm{v}_k$.
-    Therefore, $\bm{b} \in \spn V = W$.
-    Since $\bm{b}$ is really a formalized way to represent a member of $\spn W$, we can see that. Therefore, $\spn W \subseteq \spn V$.
-    However since we've already established that $\spn V \subseteq \spn W$, the only option is for $\spn V = \spn W$ or $\spn W = W$.
-
-    This proves it for the case of 2 vectors.
-    We need to generalize it to an arbitrary number of vectors, after which we can complete the proof using induction.
   \end{proof}
-\end{theorem}
-
-
-
-
-
-\begin{definition}{Standard Bases}
-  Standard bases are the vectors $\bm{e}_1, \cdots, \bm{e}_n \in \RRN$, where
-
-  \begin{align*}
-    \bm{e}_1 &= \pars{1, 0, \cdots, 0} \\
-    & \vdots \\
-    \bm{e}_n &= \pars{0, 0, \cdots, 1} \\
-  \end{align*}
 
   It's sometimes useful to note that bases are the shortest way to write a span.
-\end{definition}
+\end{theorem}
 
 
 \begin{theorem}{Standard Bases}
@@ -784,11 +757,6 @@ Cross products are less relevant in higher dimensions:
 \end{definition}
 
 
-
-
-
-
-
 \subsection{Orthonormal Bases}
 
 \begin{definition}{Orthonormal Bases}
@@ -823,7 +791,6 @@ $$\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$$
 \subsubsection{Planes}
 
 
-
 $$
 \bm{a} \cdot \pars{\bm{x} - \bm{x}_0} = 0
 $$
@@ -831,10 +798,20 @@ $$
 If you take a vector lying in the plane, it has to be perpendicular to $\bm{a}$.
 (draw picture)
 
+\begin{center}
+  \begin{asy}
+    import three;
+
+    size(100);
+    draw(O--Z,red+dashed,Arrow3);
+    draw(((-1,-1,0)--(1,-1,0)--(1,1,0)--(-1,1,0)--cycle), blue);
+  \end{asy}
+\end{center}
+
 If you take two vectors that aren't parallel, their span is the plane that they are in.
 This naive plane will go through the origin.
 However, you also need planes that don't go through the origin.
-Therefore, you can also write the plane as
+Therefore, you can use a constant term $\bm{x}_0$ to also write the plane as
 
 $$
 \bm{x} (s, t) = s \bm{v}_1 + t \bm{v}_2 + \bm{x}_0
@@ -846,24 +823,44 @@ $$
 \bm{a} \times \pars{\bm{x} - \bm{x}_0} = 0
 $$
 
-All vectors on the line must be parallel to $\bm{a}$.
+All vectors on the line must be parallel or anti-parallel to $\bm{a}$.
 
 \subsection{Orthonormal Bases}
 
-(Example 11 from the textbook)
+\begin{example}
+  (Example 1.11 of \cite{carlen})
 
-\subsection{}
+  Given a nonzero vector $\bm{v} \in \RR^3$, how do we find an orthonormal basis $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$ in which $\bm{u}_3$ is a positive multiple of $\bm{v}$?
+
+  The general procedure is as follows: $\bm{u}_3 = \norm{\bm{v}}^{-1} \bm{v}$ is the only unit vector that is a positive mutliple of $\bm{v}$.
+  To pick another vector $\bm{u}_1$, we must find a vector orthogonal to $\bm{v}$. Let $$\bm{w} := \bm{e}_3 \times \bm{v} = \pars{-v_2, v_1, 0}$$
+  Then, we can normalize this vector to find $\bm{u}_1$.
+  Finally, we use the cross product to find $\bm{u}_2 = \bm{u}_3 \times \bm{u}_1$.
+  This basis will be right-handed.
+\end{example}
+
+\subsection{Worked Examples}
 
 
 \begin{example}
   
-  Example 1.12 of \cite{carlen}
+  Example 1.12 of \cite{carlen}.
+
+  Consider the plane passing through $\bm{x}_0$ that is orthogonal to the vector $\bm{a}$.
+  For the sake of concreteness, let
+  \begin{align*}
+    \bm{a} &= \pars{1, 2, 3} \\
+    \bm{x}_0 &= \pars{3, 2, 1} \\
+  \end{align*}
+
+  By definition, the plane is the set of points $\bm{x}$ that satisfy
+  
   $$
-  \bm{a} = \pars{1, 2, 3} \\
-  \bm{x}_0 = \pars{3, 2, 1}
+  \bm{a} \cdot \pars{\bm{x} - \bm{x}_0} = 0
   $$
-  (FINISH)
+  
   Take dot product and simplify to get
+  
   $$
   x + 2y + 3z = 10
   $$
@@ -872,16 +869,30 @@ All vectors on the line must be parallel to $\bm{a}$.
 
 \begin{example}
   
+  Example 1.13 of \cite{carlen}.
+
+  Suppose we have the equation
   $$
   \bm{a} \cdot \bm{x} = d
   $$
 
   Let $\bm{a} = \pars{1, 2, 1 }$ and $d=10$.
 
-  We parametrize the set of solutions:
-  (FINISH)
+  We can take this dot product fairly easily, getting
 
-  We'll be parametrizing planes when we take triple surface integrals etc.
+  $$
+  x + 2y + z = 10 \iff z = 10 - 2y - x
+  $$
+
+  We can also define the plane as the set of points $\bm{x}$ that satisfy this relation.
+  We express this as
+
+  \begin{align*}
+    \bm{x} &= \pars{x, y, 10 - 2y - x} \\
+    &= \pars{0, 0, 10} + x \pars{1, 0, -1} + y \pars{0, 1, -2} \\
+  \end{align*}
+
+  We'll be parametrizing planes a lot when we take triple surface integrals and other spicy objects later in the class.
 \end{example}
 
 
@@ -905,7 +916,293 @@ All vectors on the line must be parallel to $\bm{a}$.
 
 \lecture{September 13}
 
-1.1.6, 1.1.7, 1.1.8, 1.2.3
+We covered (partially in almost all cases) 1.1.6, 1.1.7, 1.1.8, 1.2.3 of \cite{carlen}.
+
+\subsection{Parallel and Orthogonal Components}
+1.1.6 of \cite{carlen}.
+
+In the book, the section almost feels like a small comment, but is in reality really important for a lot of proofs.
+
+Let $\bm{x} \in \RR^m$.
+Fix a vector $\bm{a} \in \RR^m$.
+
+We want to find $t$ such that
+$$
+\bm{x} = t \bm{a} + \pars{\bm{x} - t \bm{a}}
+$$
+
+This is of course, a tautology, but the point is that we want a component that goes in the direction of $\bm{a}$ and a component that is orthogonal to it.
+Taking the dot product with respect to $\bm{a}$, we will later find it easy to see that this holds true when $t = \frac{\bm{x} \cdot \bm{a}}{\norm{\bm{a}}^2}$.
+
+\begin{align*}
+  \bm{x} &= \frac{\bm{x} \cdot \bm{a}}{\norm{\bm{a}}^2} \bm{a} + \pars{ \bm{x} - \frac{\bm{x} \cdot \bm{a}}{\norm{\bm{a}}^2} \bm{a}} \\
+\end{align*}
+
+Looking at the two distinct components of the RHS of this equation, we can define the parallel and orthogonal components of a vector.
+
+\begin{definition}{Parallel and Orthogonal Components}
+  Given vectors $\bm{x}, \bm{a} \in \RR^n$, the parallel and orthogonal components with respect to $\bm{a}$ are, respectively,
+  \begin{align*}
+    \bm{x}_{\parallel} &= \frac{\bm{x} \cdot \bm{a}}{\norm{\bm{a}}^2} \bm{a} \\
+    \bm{x}_{\perp} &= \bm{x} - \frac{\bm{x} \cdot \bm{a}}{\norm{\bm{a}}^2} \bm{a} \\
+  \end{align*}
+
+  We can define $\bm{u} := \frac{\bm{a}}{\norm{\bm{a}}^2}$.
+    \begin{align*}
+    \bm{x}_{\parallel} &= \pars{\bm{x} \cdot \bm{u}} \bm{u} \\
+    \bm{x}_{\perp} &= \bm{x} - \pars{\bm{x} \cdot \bm{u}} \bm{u} \\
+  \end{align*}
+\end{definition}
+
+Note that introducing a system of coordinates involving $\bm{a}$ is useful in a lot of problems.
+
+\subsection{Orthonormal Subsets}
+
+\begin{definition}{Orthonormal Subsets}
+  An orthonormal subset $\set{\bm{u}_1, \dots, \bm{u}_m} \in \RR^n$ satisfies the following properties:
+  \begin{align*}
+    \bm{u}_i & \in \RR^n \\
+    \norm{\bm{u}_i} &= 1 \\
+    \forall i, j: i \neq j,\ \bm{u}_i \cdot \bm{u}_j &= 0 \\
+  \end{align*}
+\end{definition}
+
+\begin{definition}{Orthonormal Bases}
+  An orthonormal basis $\set{\bm{u}_1, \dots, \bm{u}_m} \in \RR^n$ is an orthonormal subset that satisfies $m = n$.
+  In other words, the length of the set is equal to the number of dimensions.
+\end{definition}
+
+\begin{theorem}{Fundamental Theorem on Orthonormal Bases}
+  Let $\set{\bm{u}_1, \dots, \bm{u}_n} \in \RR^m$ be an orthonormal basis of $\RR^m$.
+  \begin{align*}
+    \forall \bm{x} \in \RR^m,\ \bm{x} &= \sum \limits_{j=1}^{n} \pars{\bm{x} \cdot \bm{u}_j} \bm{u}_j \\
+  \end{align*}
+
+  The norm can also be computed from the orthonormal basis.
+  
+  $$
+  \norm{\bm{x}}^2 = \sum \limits_{j=1}^{n} \pars{\bm{x} \cdot \bm{u}_j}^2
+  $$
+
+  \begin{proof}
+    We prove this theorem by contradiction.
+    Something about the way this statement is written screams for taking a dot product.
+    Define
+
+    \begin{align*}
+      \bm{z} & := \bm{x} - \sum_j \pars{\bm{x} \cdot \bm{u}_j} \bm{u}_j \\
+      \bm{z} \cdot \bm{u}_i &= \bm{x} \cdot \bm{u}_i - \sum_j \pars{\bm{x} \cdot \bm{u}_j} \pars{\bm{u}_j \cdot \bm{u}_i} \\
+             &= \bm{x} \cdot \bm{u}_i - \bm{x} \cdot \bm{u}_i \\
+             &= 0 \\
+      \bm{z} & \perp \bm{u}_i\ \forall i \\
+    \end{align*}
+
+    But if $\bm{z} \neq 0$,
+    
+    $$
+    \frac{\bm{z}}{\norm{\bm{z}}} = \bm{u}_{n+1}
+    $$
+
+    This is a direct contradiction of Lemma 1, so $\bm{z} = 0$ is true.
+
+    
+    
+  \end{proof}
+  
+\end{theorem}
+
+\begin{remark}
+  
+  A lemma is a statement that is either less important or used to prove a theorem.
+\end{remark}
+
+
+\begin{lemma}
+  
+  In $\RR^n$, there is no orthonormal subset of vectors with greater than $n$ elements.
+
+  \begin{proof}
+    We use induction on $n$.
+
+    We start at $n=1$.
+    In $n=1$, there are two unit vectors: $\set{1, -1}$, which isn't an orthonormal set.
+
+    Assume that the statement is true for $\RR^{n-1}$.
+    We proceed by contradiction.
+    Suppose we can find an orthonormal set
+    
+    $$
+    \set{\bm{u}_1, \dots, \bm{u}_{n+1}} \in \RR^n
+    $$
+    
+    Then, define another orthonormal set
+    
+    $$
+    \set{\bm{v}_1, \dots, \bm{v}_{n+1} } \in \RR^n,\ \bm{v}_{n+1} = \bm{e}_n
+    $$
+
+    If $\bm{u}_{n+1} = \bm{e}_n$, then $\bm{v}_i = \bm{u}_i$.
+    If $\bm{u}_{n+1} \neq \bm{e}_n$, we can take the Householder reflection of $\bm{u}_i$.
+    Lemma 3 guarentees the existence of a unit vector $\bm{a}$ such that
+    
+    $$
+    h_{\bm{a}} \pars{\bm{u}_{n+1}} = \bm{e}_n
+    $$
+
+    In both cases, we have an orthonormal set with
+    
+    $$
+    \forall j \leq n:\ \bm{v}_j \cdot \bm{e} = 0
+    $$
+
+    But if we remove the last component, that forms an orthonormal set (by Lemma 2) in $\RR^{n-1}$.
+    This is a contradiction, so we can conclude the proof by induction.
+  \end{proof}
+\end{lemma}
+
+
+\begin{example}
+  
+  The most trivial example uses the fundamental basis vectors $\bm{e}_i$ to express a general vector $\bm{x}$.
+
+  $$
+  \bm{x} = \sum^n \bm{x}_j \bm{e}_j
+  $$
+
+  This is fairly easy to see given a concrete $\bm{x}$.
+\end{example}
+
+\begin{definition}{Householder Reflections}
+  We define a reflection about a symmetrical object.
+  Let $\bm{u}$ be a unit vector orthogonal to this object.
+  Let
+  
+  $$
+  \bm{x} = \bm{x}_{\perp} + \bm{x}_{\parallel}
+  $$
+  
+  Here, the parallel and perpendicular components are taken with respect to $\bm{u}$.
+  The Householder reflection of a vector is the transformation
+  \begin{align*}
+    \bm{x}_{\parallel} &\to - \bm{x}_{\parallel} \\
+    \bm{x}_{\perp} &\to  \bm{x}_{\perp} \\
+  \end{align*}
+
+  In other words,
+  $$
+  h_{\bm{u}} \pars{\bm{x}} = \bm{x}_{\perp} - \bm{x}_{\parallel}
+  $$
+\end{definition}
+
+
+\begin{lemma}{Dot Product Under Householder Reflections}
+  
+  $$
+  h_{\bm{u}} \pars{\bm{x}} \cdot h_{\bm{u}} \pars{\bm{y}} = \bm{x} \cdot \bm{y}
+  $$
+
+  \begin{proof}
+    
+    \begin{align*}
+      h_{\bm{u}} \pars{\bm{x}} \cdot h_{\bm{u}} \pars{\bm{y}} &= \pars{\bm{x}_{\perp} - \bm{x}_{\parallel}} \cdot \pars{\bm{y}_{\perp} - \bm{y}_{\parallel}} \\
+                                                              &= \bm{x}_{\perp} \cdot \bm{y}_{\perp} + \bm{x}_{\parallel} \bm{y}_{\parallel} \\
+      \bm{x} \cdot \bm{y} &= \pars{\bm{x}_{\perp} - \bm{x}_{\parallel}} \cdot \pars{\bm{y}_{\perp} - \bm{y}_{\parallel}} \\
+                                                              &= \bm{x}_{\perp} \cdot \bm{y}_{\perp} + \bm{x}_{\parallel} \bm{y}_{\parallel} \\
+    \end{align*}
+
+    Here, the cross terms dissappear by orthogonality.
+  \end{proof}
+\end{lemma}
+
+Its easy to see that $$ \norm{h_{\bm{u}} \pars{\bm{x}}} = \norm{\bm{x}}$$
+
+\begin{lemma}
+  
+  Suppose we have two vectors $\bm{x}, \bm{y}$ such that
+  $$
+  \norm{\bm{x}} = \norm{\bm{y}}
+  $$
+
+  If $\bm{x} \neq \bm{y}$, then $\exists \bm{u}$ such that
+  $$
+  \bm{y} = h_{\bm{u}} \pars{\bm{x}}
+  $$
+
+  In fact,
+  $$
+  \bm{u} = \frac{\bm{x} - \bm{y}}{\norm{\bm{x} - \bm{y}}}
+  $$
+
+  \begin{proof}
+    \begin{align*}
+      h_{\bm{u}} \pars{x} &= \bm{x}_{\perp} - \bm{x}_{\parallel} \\
+                          &= \bm{x} - \pars{\bm{x} \cdot \bm{u}} \bm{u} - \pars{\bm{x} \cdot \bm{u}} \bm{u} \\
+                          &= \bm{x} - 2 \pars{\bm{x} \cdot \bm{u}} \bm{u} \\
+                          &= \bm{x} - \frac{2}{\norm{\bm{x} - \bm{y}}^2} \pars{\bm{x} \cdot \pars{\bm{x} - \bm{y}}} \pars{\bm{x} - \bm{y}} \\
+                          &= \bm{x} - \frac{2}{\norm{\bm{x}}^2 + \norm{\bm{y}}^2 - 2 \bm{x} \cdot \bm{y}} \pars{\bm{x} \cdot \pars{\bm{x} - \bm{y}}} \pars{\bm{x} - \bm{y}} \\
+                          &= \bm{x} - \frac{2}{2 \pars{\norm{\bm{x}}^2 -  \bm{x} \cdot \bm{y}}} \pars{\bm{x} \cdot \pars{\bm{x} - \bm{y}}} \pars{\bm{x} - \bm{y}} \\
+                          &= \bm{x} - \frac{1}{ \pars{\norm{\bm{x}}^2 -  \bm{x} \cdot \bm{y}}} \pars{\bm{x} \cdot \pars{\bm{x} - \bm{y}}} \pars{\bm{x} - \bm{y}} \\
+                          &= \bm{x} - \frac{1}{ \bm{x}  \cdot \pars{ \bm{x} - \cdot \bm{y} }} \pars{\bm{x} \cdot \pars{\bm{x} - \bm{y}}} \pars{\bm{x} - \bm{y}} \\
+                          &= \bm{x} - \pars{\bm{x} - \bm{y}} \\
+                          &= \bm{y} \\
+    \end{align*}
+  \end{proof}
+\end{lemma}
+
+\begin{remark}
+  
+  You should never state something is obvious when writing a proof when it really isn't.
+  Definitely not on homework assignments and \emph{definitely} not on exams.
+\end{remark}
+
+\subsection{Distance Problems in $\RR^3$}
+
+
+
+\begin{theorem}{Distance Between a Point and a Line}
+  Given a line
+  $$
+  L: \bm{x} \pars{t} = \bm{x}_0 + t \bm{a}
+  $$
+  
+  and a point $\bm{p} \in \RR^3$, the minimal distance between the two is
+  
+  $$
+  \norm{\pars{\bm{x}_0 - \bm{p}} \times \bm{a}}
+  $$
+
+  \begin{proof}
+    
+    We can rescale to constrain $\norm{\bm{a}} = 1$.
+    The distance between $L$ and $\bm{p}$ is defined as
+    
+    $$
+    \min_{t} \norm{\bm{x} \pars{t} - \bm{p}}
+    $$
+    
+    \begin{align*}
+      \norm{\bm{x} \pars{t} - \bm{p}}^2 &= \norm{\pars{\bm{x} \pars{t} - \bm{p}}_{\parallel}}^2 + \norm{\pars{\bm{x} \pars{t} - \bm{p}}_{\perp}}^2 \\
+                                        &= \norm{\pars{\bm{x} \pars{t} - \bm{p}} \cdot \bm{a}}^2 + \norm{\pars{\bm{x} \pars{t} - \bm{p}} \times \bm{a}}^2 \\
+                                        &= \norm{\pars{\bm{x}_0 \cdot \bm{a} - \bm{p} \cdot \bm{a} + t} \bm{a}}^2 + \norm{x_0 \times \bm{a} - \bm{p} \times \bm{a}}^2 \\
+    \end{align*}
+    The first term is minimized when $t = \pars{\bm{p} - \bm{x}_0} \cdot \bm{a}$.
+    Therefore, the distance between the line and point is $\norm{\pars{\bm{x}_0 - \bm{p}} \times \bm{a}}$.
+    In addition, the point on $L$ that is closest to $\bm{p}$ is $\bm{x}_0 + \pars{\pars{\bm{p} - \bm{x}_0} \cdot \bm{a}} \bm{a}$.
+  \end{proof}
+  Aside:
+  by Lagrange's identity, for a unit vector $\bm{u}$
+  \begin{align*}
+    - \bm{u} \times \pars{\bm{u} \times \bm{c}} &= - \pars{\pars{\bm{u} \cdot \bm{c}} \bm{u} - \pars{\bm{u} \cdot \bm{u}} \bm{c}} \\
+                                                &= \bm{c} - \pars{\bm{u} \cdot \bm{c}} \bm{u} \\
+                                                &= \bm{c}_{\perp} \\
+  \end{align*}
+  
+\end{theorem}
+
+
+
+
+
 
 \lecture{September 15}
 

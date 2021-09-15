@@ -98,17 +98,22 @@
 % math classes in general
 
 % definitions
-\newtcolorbox[auto counter,number within=section]{definition}[2][]{colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries,title=Definition~\thetcbcounter: #2,#1}
+\newtcolorbox[auto counter,number within=section]{definition}[2][]{arc=0pt,outer arc=0pt,colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries,title=Definition~\thetcbcounter: #2,#1}
 
 % theorems
-\newtcolorbox[auto counter, number within = section]{theorem}[2][]{colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries,title=Theorem~\thetcbcounter: #2,#1}
+\newtcolorbox[auto counter, number within = section]{theorem}[2][]{arc=0pt,outer arc=0pt,colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries,title=Theorem~\thetcbcounter: #2,#1}
 
 % proofs
-\tcolorboxenvironment{proof}{blanker,breakable,left=5mm,before skip=10pt,after skip=10pt,borderline west={1mm}{0pt}{blue}}
+\tcolorboxenvironment{proof}{blanker,breakable,left=5mm,before skip=10pt,after skip=10pt,borderline west={1mm}{0pt}{orange}}
+
+% lemmas
+\newtcolorbox[auto counter, number within = section]{lemma}[2][]{arc=0pt,outer arc=0pt,colback=brown!5!white,colframe=brown!75!black,fonttitle=\bfseries,title=Lemma~\thetcbcounter: #2,#1}
 
 % examples
-\newtcolorbox[auto counter,number within=section]{example}[2][]{colback=green!5!white,colframe=green!75!black,fonttitle=\bfseries,title=Example~\thetcbcounter}
+\newtcolorbox[auto counter,number within=section]{example}{arc=0pt,outer arc=0pt,colback=green!5!white,colframe=green!75!black,fonttitle=\bfseries,title=Example~\thetcbcounter}
 
+% remarks
+\newtcolorbox[auto counter, number within = section]{remark}{arc=0pt,outer arc=0pt,colback=black!5!white,colframe=black,fonttitle=\bfseries,title=Remark ~\thetcbcounter}
 
 
 \endinput
