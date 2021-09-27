@@ -1,0 +1,458 @@
+\documentclass{article}
+
+\usepackage[stdmargin, noindent]{../../rajeev}
+\usepackage{mathtools}
+\usepackage{dirtytalk}
+
+\pagestyle{fancy}
+\rhead{\today}
+\lhead{Math 291H HW \#3}
+
+\begin{document}
+
+\begin{center}
+    \Large \textbf{Math 291H Homework \#3}
+  \end{center}
+\begin{center}
+    \Large Rajeev Atla
+  \end{center}
+
+
+  
+Honors Pledge Statement: \say{The writeup of this submission is my own work alone.}
+
+\problem{2.1}
+
+\subsection*{a}
+
+\begin{align*}
+  \bm{x}' \pars{t} &= \pars{x' \pars{t}, y' \pars{t}} \\
+                   &= \boxed{\pars{1, 2t}} \\
+  \bm{x}'' \pars{t} &= \boxed{\pars{0, 2}} \\
+\end{align*}
+
+\subsection*{b}
+
+\begin{align*}
+  v \pars{t} &= \norm{\bm{v} \pars{t}} \\
+             &= \boxed{\sqrt{1 + 4t^2}} \\
+  \bm{T} \pars{t} &= \frac{\bm{v} \pars{t}}{v \pars{t}} \\
+  &= \boxed{\frac{1}{\sqrt{1 + 4t^2}} \pars{1, 2t} } \\
+\end{align*}
+
+
+\subsection*{c}
+At $t=1$, $\bm{x} = \pars{2, 1}$.
+
+\begin{align*}
+  \bm{y} \pars{t} & \approx \pars{2, 1} + \pars{t-1} \pars{1, 2} \\
+  &= \boxed{\pars{1, -1} + t \pars{1, 2}} \\
+\end{align*}
+
+
+\problem{2.3}
+We need to prove two preliminary results in order to solve this problem: both the product and sum of two continuous functions are continuous.
+
+\subsection*{Sums}
+
+If $\epsilon > 0$, then we must necessarily have $\frac{\epsilon}{2} > 0$.
+If $\bm{x} \pars{t}$ and $\bm{y} \pars{t}$ are both continuous over $\RR$,
+
+\begin{align*}
+  \forall \epsilon > 0, \exists \delta_{\bm{x}} > 0 &: \abs{t - t_0} < \delta_{\bm{x}} \implies \norm{ \bm{x} \pars{t} - \bm{x} \pars{t_0}} < \frac{\epsilon}{2} \\
+  \forall \epsilon > 0, \exists \delta_{\bm{y}} > 0 &: \abs{t - t_0} < \delta_{\bm{y}} \implies \norm{\bm{y} \pars{t} - \bm{y} \pars{t_0}} < \frac{\epsilon}{2} \\
+\end{align*}
+
+Define $\bm{z} \pars{t} := \bm{x} \pars{t} + \bm{y} \pars{t}$.
+Using the triangle inequality,
+
+\begin{align*}
+  \norm{\bm{z} \pars{t} - \bm{z} \pars{t_0}} & = \norm{\bm{x} \pars{t} + \bm{y} \pars{t} - \bm{x} \pars{t_0} - \bm{y} \pars{t_0}} \\
+                                             & = \norm{\bm{x} \pars{t} - \bm{x} \pars{t_0} + \bm{y} \pars{t} - \bm{y} \pars{t_0}} \\
+                                             & \leq \norm{\bm{x} \pars{t} - \bm{x} \pars{t_0}} + \norm{\bm{y} \pars{t} - \bm{y} \pars{t_0}} \\
+                                            & < 2 \pars{\frac{\epsilon}{2}} \\
+                                            & = \epsilon \\
+\end{align*}
+
+Define $\delta_{\bm{z}} := \min \set{\delta_{\bm{x}}, \delta_{\bm{y}}}$.
+We have
+
+$$
+\forall \epsilon > 0, \exists \delta_{\bm{z}} > 0 : \abs{t - t_0} < \delta_{\bm{z}} \implies \norm{ \bm{z} \pars{t} - \bm{z} \pars{t_0}} < \epsilon
+$$
+This shows that $\bm{z} \pars{t}$ is continuous.
+
+\subsection*{Products}
+
+Let $x \pars{t}, y \pars{t}$ be real-valued continuous functions over $\RR$.
+Then,
+
+\begin{align*}
+    \forall \epsilon_{x} > 0, \exists \delta_{x} > 0 &: \abs{t - t_0} < \delta_{x} \implies \abs{ x \pars{t} - x \pars{t_0}} < \epsilon_x \\
+  \forall \epsilon_{y} > 0, \exists \delta_{y} > 0 &: \abs{t - t_0} < \delta_{y} \implies \abs{y \pars{t} - y \pars{t_0}} < \epsilon_y \\
+\end{align*}
+
+Define $w \pars{t} := x \pars{t} y \pars{t}$.
+We wish to show that
+
+$$
+\forall \epsilon_{w} > 0, \exists \delta_{w} > 0 : \abs{t - t_0} < \delta_{w} \implies \abs{ w \pars{t} - w \pars{t_0}} < \epsilon_w
+$$
+
+We have
+
+\begin{align*}
+  \abs{w \pars{t} - w \pars{t_0}} & = \abs{x \pars{t} y \pars{t} - x \pars{t_0} y \pars{t_0}} \\
+                                  & = \abs{x \pars{t} y \pars{t} - x \pars{t} y \pars{t_0} + x \pars{t} y \pars{t_0} - x \pars{t_0} y \pars{t_0}} \\
+                                  & \leq \abs{x \pars{t} y \pars{t} - x \pars{t} y \pars{t_0}} + \abs{x \pars{t} y \pars{t_0} - x \pars{t_0} y \pars{t_0}} \\
+                                  & = \abs{x \pars{t}} \abs{y \pars{t} - y \pars{t_0}} + \abs{y \pars{t_0}} \abs{x \pars{t} - x \pars{t_0}} \\
+                                  & < \epsilon_y \abs{x \pars{t}} + \epsilon_x \abs{y \pars{t_0}} \\
+\end{align*}
+
+Here, we have used the triangle inequality and the above definition of the continuity of $x$ and $y$.
+Using the continuity of $x \pars{t}$, we can pick $\delta_x$, using $k \in \RR$ to avoid having a denominator of 0.
+
+\begin{align*}
+  \epsilon_x &= \frac{\epsilon_w}{2 \abs{y \pars{t_0}} + k},\ k > 0 \\
+  \epsilon_x \abs{y \pars{t_0}} &= \frac{\epsilon_w \abs{y \pars{t_0}}}{2 \abs{y \pars{t_0}} + k} \\
+  & < \frac{\epsilon_w}{2} \\
+\end{align*}
+
+We then note by the reverse triangle inequality,
+
+$$
+  \abs{x \pars{t} - x \pars{t_0}} \geq \abs{x \pars{t}} - \abs{x \pars{t_0}} \\
+$$
+
+In addition, using continuity, we can pick $\delta_x$ such that $\abs{x \pars{t} - x \pars{t_0}} < \epsilon_w$.
+Combining with the above inequality, we see that
+
+\begin{align*}
+  \abs{x \pars{t}} - \abs{x \pars{t_0}} &< \epsilon_w \\
+  \abs{x \pars{t}} &< \abs{x \pars{t_0}} + \epsilon_w \\
+\end{align*}
+
+We then pick $\delta_y$ such that
+
+\begin{align*}
+  \epsilon_y &= \frac{\epsilon_w}{2 \pars{\epsilon_w + \abs{x \pars{t_0}}}} \\
+  \epsilon_y \abs{x \pars{t}} &= \frac{\epsilon_w \abs{x \pars{t}}}{2 \pars{\epsilon_w + \abs{x \pars{t_0}}}} \\
+             & < \frac{\epsilon_w}{2} \pars{\frac{\epsilon_w + \abs{x \pars{t_0}}}{\epsilon_w + \abs{x \pars{t_0}}}} \\
+             &= \frac{\epsilon_w}{2} \\
+\end{align*}
+
+We then have
+
+\begin{align*}
+  \epsilon_y \abs{x \pars{t}} + \epsilon_x \abs{y \pars{t_0}} & < 2 \pars{\frac{\epsilon_w}{2}} \\
+  &= \epsilon_w
+\end{align*}
+
+Putting together all the inequalities, we have
+
+$$
+\abs{w \pars{t} - w \pars{t_0}} < \epsilon_w
+$$
+
+This establishes that $w \pars{t}$ is a continuous function in $\RR$.
+
+
+\subsection*{Dot Product}
+We show that the dot product is a combination of additive and multiplicative operations on the entry functions of $\bm{x} \pars{t}$ and $\bm{y} \pars{t}$.
+Recall that in order for $\bm{x} \pars{t}$, each of $\set{x_i \pars{t}}$ must also be a continuous function.
+The same goes for $\bm{y} \pars{t}$.
+
+Define $v \pars{t} := \bm{x} \pars{t} \cdot \bm{y} \pars{t}$.
+By definition
+
+\begin{align*}
+  v \pars{t} &= \bm{x} \pars{t} \cdot \bm{y} \pars{t} \\
+             &= \sum \limits_{i=1}^{i=n} x_i \pars{t} y_i \pars{t} \\
+\end{align*}
+
+Further, define
+
+$$
+v_{k} \pars{t} := \sum \limits_{i=1}^{k \leq n} x_i \pars{t} y_i \pars{t}
+$$
+
+We see that $v_1 \pars{t} = x_1 \pars{t} y_1 \pars{t}$, the product of two continuous functions, making it a continuous function.
+Similarly,
+\begin{align*}
+  v_2 \pars{t} &= x_1 \pars{t} y_1 \pars{t} + x_2 \pars{t} y_2 \pars{t} \\
+               &= v_1 \pars{t} + x_2 \pars{t} y_2 \pars{t} \\
+\end{align*}
+
+Since both $x_2 \pars{t}$ and $y_2 \pars{t}$ are both continuous functions, their product is also a continuous function.
+In addition, we have already shown that $v_1 \pars{t}$ is a continuous function.
+Therefore, $v_2 \pars{t}$ is a continuos function.
+In general for $k \leq n$,
+
+$$
+v_k \pars{t} = v_{k-1} \pars{t} + x_k \pars{t} y_k \pars{t}
+$$
+
+Each term is a continouus function, so $v_k \pars{t}$ is also a continuous function.
+In the $k=n$ case, this becomes the dot product, completing the proof.
+
+
+
+\subsection*{Cross Product}
+In $\RR^3$, the cross product is
+
+\begin{align*}
+  \bm{x} \pars{t} \times \bm{y} \pars{t} &=
+                                           \begin{vmatrix}
+                                             \bm{e}_1 & \bm{e}_2 & \bm{e}_3 \\
+                                             x_1 \pars{t} & x_2 \pars{t} & x_3 \pars{t} \\
+                                             y_1 \pars{t} & y_2 \pars{t} & y_3 \pars{t} \\
+                                           \end{vmatrix} \\
+                                         &= \pars{x_2 \pars{t} y_3 \pars{t} - x_3 \pars{t} y_2 \pars{t}} \bm{e}_1 + \pars{x_3 \pars{t} y_1 \pars{t} - x_1 \pars{t} y_3 \pars{t}} \bm{e}_2 + \pars{x_1 \pars{t} y_2 \pars{t} - x_2 \pars{t} y_1 \pars{t}} \bm{e}_3 \\
+\end{align*}
+
+A vector function is continuous if and only if each of its entry functions is also continuous.
+Therefore, it suffices to show that each entry function is continuous.
+Each entry function is a combination of products of continuous functions and differences between these products.
+Therefore, the cross product is continuous.
+
+\problem{2.4}
+
+\subsection*{a}
+
+\begin{align*}
+  \bm{v} \pars{t} &= \boxed{\pars{- \sin \pars{t}, \cos \pars{t}, \frac{1}{r}}} \\
+  \bm{a} \pars{t} &= \boxed{\pars{- \cos \pars{t}, - \sin \pars{t}, 0}} \\
+\end{align*}
+
+\subsection*{b}
+
+\begin{align*}
+  v \pars{t} &= \sqrt{\sin^2 t + \cos^2 t + \frac{1}{r^2}} \\
+             &= \boxed{\sqrt{1 + \frac{1}{r^2}}} \\
+  \bm{T} \pars{t} &= \frac{\bm{v} \pars{t}}{v \pars{t}} \\
+             &= \boxed{ \frac{r}{\sqrt{1+r^2}} \pars{- \sin \pars{t}, \cos \pars{t}, \frac{1}{r}}} \\
+\end{align*}
+
+\subsection*{c}
+
+\begin{align*}
+  \bm{a}_{\parallel} \pars{t} &= v' \pars{t} \bm{T} \pars{t} \\
+  &= 0 \\
+  \bm{a}_{\perp} \pars{t} &= v \pars{t} \bm{T}' \pars{t} \\
+                              &= \pars{\sqrt{1 + \frac{1}{r^2}}} \pars{\frac{r}{\sqrt{1+r^2}} \pars{- \cos \pars{t}, - \sin \pars{t}, 0}} \\
+                              &= \pars{- \cos \pars{t}, - \sin \pars{t}, 0} \\
+  \bm{N} \pars{t} &= \frac{\bm{a}_{\perp} \pars{t}}{\norm{\bm{a}_{\perp} \pars{t}}} \\
+                              &= \boxed{\pars{- \cos \pars{t}, - \sin \pars{t}, 0}} \\
+  \kappa \pars{t} &= \frac{ \norm{\bm{a}_{\perp} \pars{t}} }{v^2 \pars{t}} \\
+                              &= \frac{1}{1 + \frac{1}{r^2}} \\
+                              &= \boxed{\frac{r^2}{1+r^2}} \\
+  \bm{B} \pars{t} &= \bm{T} \pars{t} \times \bm{N} \pars{t} \\
+                              &= \boxed{\frac{1}{\sqrt{1+r^2}} \pars{\sin \pars{t}, - \cos \pars{t}, r}} \\
+  \tau \pars{t} &= \frac{1}{v^6 \pars{t} \kappa^2 \pars{t}} \pars{\bm{x}' \pars{t} \times \bm{x}'' \pars{t}} \cdot \bm{x}''' \pars{t} \\
+                              &= \frac{1}{\pars{1 + \frac{1}{r^2}}^3} \pars{1 + \frac{1}{r^2}}^2 \pars{\pars{- \sin \pars{t}, \cos \pars{t}, \frac{1}{r}} \times \pars{- \cos \pars{t}, - \sin \pars{t}, 0}} \cdot \pars{\sin \pars{t}, - \cos \pars{t}, 0} \\
+                              &= \frac{1}{1 + \frac{1}{r^2}} \pars{\frac{1}{r} \sin \pars{t}, - \frac{1}{r} \cos \pars{t}, 1} \cdot \pars{\sin \pars{t}, - \cos \pars{t}, 0} \\
+                              &= \frac{r^2}{1+r^2} \pars{\frac{1}{r} \sin^2 \pars{t} + \frac{1}{r} \cos^2 \pars{t}} \\
+                              &= \boxed{\frac{r}{1+r^2}} \\
+\end{align*}
+
+\subsection*{d}
+
+\begin{align*}
+  \boldsymbol{\omega} \pars{t} &= \tau \pars{t} \bm{T} \pars{t} + \kappa \pars{t} \bm{B} \pars{t} \\
+                               &= \pars{\frac{r}{1+r^2}} \pars{\frac{r}{\sqrt{1 + r^2}} \pars{- \sin \pars{t}, \cos \pars{t}, \frac{1}{r}}} + \pars{\frac{r^2}{1+r^2}} \pars{\frac{1}{\sqrt{1+r^2}} \pars{\sin \pars{t}, - \cos \pars{t}, r}} \\
+                               &= \frac{r^2}{\pars{1+r^2}^{\frac{3}{2}}} \pars{0, 0, r + \frac{1}{r}} \\
+  &= \boxed{\frac{r}{\sqrt{1+r^2}} \pars{0, 0, 1}} \\
+\end{align*}
+
+
+\subsection*{e}
+
+\subsubsection*{Tangent Line}
+
+\begin{align*}
+  \bm{x} \pars{t} & \approx \bm{x} \pars{\frac{\pi}{4}} + \pars{t - \frac{\pi}{4}} \bm{v} \pars{\frac{\pi}{4}}\\
+                  &= \pars{\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, \frac{\pi}{4r}} + \pars{t - \frac{\pi}{4}} \pars{- \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, \frac{1}{r}} \\
+                  &= \boxed{\pars{\frac{4+\pi}{4 \sqrt{2}}, \frac{4 - \pi}{4 \sqrt{2}} , 0} + t \pars{- \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, \frac{1}{r}}} \\
+\end{align*}
+
+\subsubsection*{Osculating Plane}
+\begin{align*}
+  \bm{B} \pars{\frac{\pi}{4}} \cdot \pars{\bm{x} \pars{t} - \bm{x} \pars{\frac{\pi}{4}}} &= 0 \\
+  \bm{B} \pars{\frac{\pi}{4}} \cdot \bm{x} \pars{t} &= \bm{B} \pars{\frac{\pi}{4}} \cdot \bm{x} \pars{\frac{\pi}{4}} \\
+  \frac{1}{\sqrt{1+r^2}} \pars{\frac{\sqrt{2}}{2}, - \frac{\sqrt{2}}{2}, r} \cdot \bm{x} \pars{t} &= \frac{1}{\sqrt{1+r^2}} \pars{\frac{\sqrt{2}}{2}, - \frac{\sqrt{2}}{2}, r} \cdot \pars{\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}, \frac{\pi}{4r}} \\
+  \pars{2\sqrt{2}, - 2\sqrt{2}, 4r} \cdot \bm{x} \pars{t} &= \pi \\
+  \boxed{2 x\sqrt{2} - 2y\sqrt{2} + 4rz = \pi} \\
+\end{align*}
+
+\subsubsection*{Intersection}
+
+\begin{align*}
+  x \pars{t} &= \frac{4+\pi}{4 \sqrt{2}} - \frac{t}{\sqrt{2}} \\
+  y \pars{t} &= \frac{4-\pi}{4 \sqrt{2}} + \frac{t}{\sqrt{2}} \\
+  z \pars{t} &= \frac{t}{r} \\
+  2 x\sqrt{2} - 2y\sqrt{2} + 4rz &= \pi \\
+\end{align*}
+
+We see that upon substitution, we are left with a contradiction, meaning that the line and plane never intersect.
+
+\problem{2.5}
+
+\subsubsection*{a}
+
+\begin{align*}
+  \bm{v} \pars{t} &= \pars{e^t \cos t - e^t \sin t, e^t \sin t + e^t \cos t, e^t} \\
+  v \pars{t} &= e^t \sqrt{\pars{\cos t - \sin t}^2 + \pars{\cos t + \sin t}^2 + 1} \\
+  &= e^t \sqrt{3} \\
+  s \pars{t} &= \int \limits_{t=0}^{t} e^t \sqrt{3}\ dt \\
+  &= \pars{e^t -1 } \sqrt{3} \\
+\end{align*}
+
+In order to write an arc-length parametrization, we invert $s \pars{t}$ to get $t \pars{s}$.
+
+\begin{align*}
+  s &= \pars{e^t - 1} \sqrt{3} \\
+  \frac{s}{\sqrt{3}} &= e^t - 1 \\
+  t \pars{s} &= \ln \pars{\frac{s}{\sqrt{3}} + 1} \\
+\end{align*}
+
+Finally, we find $\bm{x} \pars{t \pars{s}}$.
+
+\begin{align*}
+  \bm{x} \pars{t \pars{s}} &= \pars{\pars{\frac{s}{\sqrt{3}} + 1} \cos \pars{\pars{\frac{s}{\sqrt{3}} + 1}}, \pars{\frac{s}{\sqrt{3}} + 1} \sin \pars{\pars{\frac{s}{\sqrt{3}} + 1}}, \frac{s}{\sqrt{3}} + 1} \\
+\end{align*}
+
+\subsection*{b}
+\begin{align*}
+  \bm{T} \pars{t} &= \frac{\bm{v} \pars{t}}{v \pars{t}} \\
+                  &= \frac{1}{\sqrt{3}} \pars{\cos t - \sin t, \cos t + \sin t, 1} \\
+  \bm{T}' \pars{t} &= \frac{1}{\sqrt{3}} \pars{- \sin t - \cos t, - \sin t + \cos t, 0} \\
+  \bm{a}_{\perp} \pars{t} &= v \pars{t} \bm{T}' \pars{t} \\
+                  &= e^t \pars{- \sin t - \cos t, - \sin t + \cos t, 0} \\
+  \norm{\bm{a}_{\perp} \pars{t}} &= e^t \sqrt{2} \\
+  \kappa \pars{t} &= \frac{\norm{\bm{a}_{\perp} \pars{t}}}{v^2 \pars{t}} \\
+                  &= \frac{e^t \sqrt{2}}{3 e^{2t}} \\
+                  &= \boxed{e^{-t} \frac{\sqrt{2}}{3}} \\
+\end{align*}
+
+\begin{align*}
+  \bm{N} \pars{t} &= \frac{\bm{a}_{\perp}}{\norm{\bm{a}_{\perp}}} \\
+                  &= \frac{1}{\sqrt{2}} \pars{- \sin t - \cos t, - \sin t + \cos t, 0} \\
+  \bm{B} \pars{t} &= \bm{T} \pars{t} \times \bm{N} \pars{t} \\
+                  &= \frac{1}{\sqrt{6}} \pars{\sin t - \cos t, - \sin t - \cos t, 2} \\
+  \bm{B}' \pars{t} &= \frac{1}{\sqrt{6}} \pars{\cos t + \sin t, - \cos t + \sin t, 0} \\
+  \bm{B}' \pars{t} &= - v \pars{t} \tau \pars{t} \bm{N} \pars{t} \\
+  \frac{1}{\sqrt{6}} \pars{\cos t + \sin t, - \cos t + \sin t, 0} &= - \tau \pars{t} \pars{e^t \sqrt{3}} \pars{\frac{1}{\sqrt{2}} \pars{- \sin t - \cos t, - \sin t + \cos t, 0}} \\
+  \tau \pars{t} &= \boxed{\frac{e^{-t}}{3 \sqrt{2}}} \\
+\end{align*}
+
+\subsection*{c}
+
+\begin{align*}
+  \bm{x} \pars{0} &= \pars{1, 0, 1} \\
+  \bm{B} \pars{0} &= \frac{1}{\sqrt{6}} \pars{-1, -1, 2} \\
+  \bm{B} \cdot \bm{x} &= \bm{B} \cdot \bm{x} \pars{0} \\
+  \pars{-1, -1, 2} \cdot \pars{x, y, z} &= \pars{-1, -1, 2} \cdot \pars{1, 0, 1} \\
+  -x - y + 2z &= 1 \\
+\end{align*}
+
+
+\problem{2.7}
+
+\subsection*{a}
+
+\begin{align*}
+  \bm{x} \pars{t} &= \pars{2t, t^2, \frac{t^3}{3}} \\
+  \bm{v} \pars{t} &= \pars{2, 2t, t^2} \\
+  v \pars{t} &= \sqrt{4 + 4t^2 + t^4} \\
+                  &= t^2 + 2 \\
+  v' \pars{t} &= 2t \\
+  \bm{T} \pars{t} &= \pars{\frac{2}{t^2+2}, \frac{2t}{t^2+2}, \frac{t^2}{t^2+2}} \\
+  \bm{T}' \pars{t} &= \pars{- \frac{4t}{\pars{t^2+2}^2}, \frac{2 \pars{2- t^2}}{\pars{t^2+2}^2}, \frac{4}{\pars{t^2+2}^2}} \\
+  \bm{a}_{\parallel} \pars{t} &= \pars{\frac{4t}{t^2+2}, \frac{4t^2}{t^2+2}, \frac{2t^3}{t^2+2}} \\
+  \bm{a}_{\perp} \pars{t} &= \pars{- \frac{4t}{t^2 + 2}, \frac{2 \pars{2-t^2}}{t^2 + 2}, \frac{4}{t^2 + 2}} \\
+  \norm{\bm{a}_{\perp} \pars{t}} &= \frac{2 \sqrt{t^4 + 8}}{t^2 + 2} \\
+  \bm{N} \pars{t} &= \pars{-\frac{2t}{\sqrt{t^4 + 8}}, \frac{2-t^2}{\sqrt{t^4 + 8}}, \frac{2}{\sqrt{t^4 + 8}}} \\
+  \bm{B} \pars{t} &= \pars{\frac{t \pars{t^3 - 2t + 2}}{\pars{t^2 + 2} \sqrt{t^4 + 8}}, - \frac{2 \pars{t^3 + 2}}{\pars{t^2 + 2} \sqrt{t^4 + 8}}, \frac{2}{\sqrt{t^4 + 8}} } \\
+  \bm{B} \pars{1} &= \pars{\frac{1}{9}, - \frac{2}{3}, \frac{2}{3}} \\
+  \bm{x} \pars{1} &= \pars{1, \frac{1}{2}, \frac{1}{3}} \\
+  \bm{B} \pars{1} \cdot \bm{x} \pars{t} &= \bm{B} \pars{1} \cdot \bm{x} \pars{1} \\
+  \pars{\frac{1}{9}, - \frac{2}{3}, \frac{2}{3}} \cdot \pars{x, y, z} &= \frac{1}{6} \\
+  \boxed{\frac{1}{9} x - \frac{2}{3} y + \frac{2}{3} z = \frac{1}{6}} \\
+\end{align*}
+
+\subsection*{b}
+The minimal distance is
+
+\begin{align*}
+  \abs{\pars{\bm{x} \pars{1} - \pars{0, 0, 0}} \cdot \bm{B} \pars{1}} &= \boxed{\frac{1}{6}} \\
+\end{align*}
+
+
+\problem{2.9}
+
+\subsection*{a}
+
+We substitute the parametrized equation into the Cartesian equation to verify tht the parametrization is valid.
+
+\begin{align*}
+  \frac{x^2}{a^2} + \frac{y^2}{b^2} &= 1 \\
+  \frac{a^2 \cos^2 t}{a^2} + \frac{b^2 \sin^2 t}{b^2} &= 1\\
+  \cos^2 t + \sin^2 t &= 1 \\
+\end{align*}
+
+This trigonometric identity is obviously true regardless of the value of $t$, so the parametrization works.
+
+\subsection*{b}
+
+\begin{align*}
+  \bm{x} \pars{t} &= \pars{a \cos t, b \sin t} \\
+  \bm{v} \pars{t} &= \pars{- a \sin t, b \cos t} \\
+  v \pars{t} &= \sqrt{a^2 \sin^2 t + b^2 \cos^2 t} \\
+  \bm{T} \pars{t} &= \pars{- \frac{a \sin t}{\sqrt{a^2 \sin^2 t + b^2 \cos^2 t}}, \frac{b \cos t}{\sqrt{a^2 \sin^2 t + b^2 \cos^2 t}}} \\
+  \bm{T}' \pars{t} &= \pars{-\frac{ab^2 \cos t}{\pars{a^2 \sin^2 t + b^2 \cos^2 t}^{\frac{3}{2}}}, -\frac{a^2 b \sin t}{\pars{a^2 \sin^2 t + b^2 \cos^2 t}^{\frac{3}{2}}}} \\
+  \bm{a}_{\perp} \pars{t} &= \pars{-\frac{ab^2 \cos t}{a^2 \sin^2 t + b^2 \cos^2 t}, -\frac{a^2 b \sin t}{a^2 \sin^2 t + b^2 \cos^2 t}} \\
+  \norm{\bm{a}_{\perp} \pars{t}} &= \frac{ab}{\sqrt{a^2 \sin^2 t + b^2 \cos^2 t}} \\
+  \kappa \pars{t} &= \boxed{\frac{ab}{\pars{a^2 \sin^2 t + b^2 \cos^2 t}^{\frac{3}{2}}}} \\
+  \kappa ' \pars{t} &= \frac{3ab \pars{b^2 - a^2} \sin t \cos t}{\pars{a^2 \sin^2 t + b^2 \cos^2 t}^{\frac{5}{2}}} \\
+\end{align*}
+
+Let $n \in \ZZ$.
+We see that the critical points are
+$$
+\kappa \pars{\pi n} = \frac{a}{b^2}
+$$
+and
+
+$$
+\kappa \pars{\frac{\pi}{2} \pars{2n+1}} = \frac{b}{a^2}
+$$
+
+There are 3 main cases:
+\begin{itemize}
+\item When $a=b$, the ellipse degenerates into a circle and the curvature is constant throughout.
+\item When $a>b$, the ellipse is oriented along the $x$-axis.
+  Here, $\frac{a}{b^2} > \frac{b}{a^2}$.
+  This means that $t=\pi n$ are the maxima and $t = \frac{\pi}{2} \pars{2n+1}$ are the minima.
+  These $t$-coordinates correspond to the points $\pars{\pm a, 0}$ and $\pars{0, \pm b}$.
+\item When $a < b$, the ellipse is oriented along the $y$-axis.
+  Here, $\frac{a}{b^2} < \frac{b}{a^2}$.
+  This means that $t=\pi n$ are the minima and $t = \frac{\pi}{2} \pars{2n+1}$ are the maxima.
+  These $t$-coordinates correspond to the points $\pars{\pm a, 0}$ and $\pars{0, \pm b}$.
+\end{itemize}
+
+
+
+\problem{2.11}
+
+
+\begin{align*}
+  \bm{x} \pars{t} &= \pars{t+1, t^2} \\
+  \bm{v} \pars{t} &= \pars{1, 2t} \\
+  v \pars{t} &= \sqrt{1+4t^2} \\
+  s &= \int \limits_{-1}^{0} \sqrt{1+4t^2}\ dt \\
+  & \boxed{\approx 1.479} \\
+\end{align*}
+
+
+\end{document}
+

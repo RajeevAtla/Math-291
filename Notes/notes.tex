@@ -711,11 +711,14 @@ Cross products are less relevant in higher dimensions:
 \begin{theorem}{Lagrange's Identity}
   
   $$
-  \bm{a} \times \pars{\bm{b} \times \bm{c} } = \pars{\bm{a} \cdot \bm{c}} \bm{b} - \pars{\bm{a} \cdot \bm{b}} \bm{c}  $$
+  \bm{a} \times \pars{\bm{b} \times \bm{c} } = \pars{\bm{a} \cdot \bm{c}} \bm{b} - \pars{\bm{a} \cdot \bm{b}} \bm{c}
+  $$
 
     
 
   \begin{proof}
+
+    
     
   \end{proof}
 \end{theorem}
@@ -1205,6 +1208,111 @@ Its easy to see that $$ \norm{h_{\bm{u}} \pars{\bm{x}}} = \norm{\bm{x}}$$
 
 
 \lecture{September 15}
+
+\subsection{Distance Problems Continued}
+We're still in 1.2.3 of \cite{carlen}.
+
+
+The plane (DRAW PICTURE) and a point $\bm{p}$.
+
+An easy way to get to the correct answer is to construct an orthonormal basis.
+We construct a basis:
+
+\begin{align*}
+  \bm{u}_1 = \frac{\bm{v}_1}{\norm{\bm{v}_1}} \\
+  \bm{u}_2 = v_1 \times v_2 \ \norm{v_1 \times v_2} \\
+  \bm{u}_3 = u_1 \times u_2 \\
+\end{align*}
+
+(FINISH)
+
+If you can make the first two terms be 0, then that is the minimal distance.
+Solve for $t$ and $s$ such that this is true (check the denominator to make sure that its not 0).
+
+(Turn this into a theorem!!!)
+
+
+We need $n-1$ variables to parametrize an $n-1$ dimensional object (REMARK)
+
+
+Distance between two lines
+
+Suppose you have a line directed along $v_1$ and another directed along $v_2$.
+(Look into the lecture notes.)
+If the two lines cross, then the answer is 0.
+If the two lines are parallel, the answer is easy to find since the distance between the two is a constant.
+
+\subsection{Gram-Schmidt Algorithm}
+
+AKA Gram-Schmidt Orthonormalization Algorithm in $\RR^n$
+
+\subsubsection{In $\RR^2$}
+
+(CLEAN THIS UP)!!!
+
+It's a way of constructing orthonormal sets.
+
+Input: collection of vectors $v_1, v_2$.
+Output: another collection of vectors that is an orthonormal set
+
+First thing to do: turn $v_1$ into a normal vector (normalize it)
+
+We construct the orthogonal component of $v_2$ along $v_1$ (draw picture)
+
+(FInish DIS)
+
+
+\subsubsection{In $\RR^n$}
+
+(Fill this out later)
+
+\begin{remark}
+  When writing inductive proofs, the statement that we're doing an inductive proof doesn't have to always be explicity stated.
+  Of course, it's a good practice to do it anyway!
+\end{remark}
+
+(THeorem 16)
+
+
+\subsubsection{Subspaces $\RR^n$}
+
+$V \subset \RR^n$
+
+\begin{definition}{Subspaces}
+  V is a subspace of $\RR^N$ if it is stable under linear combinations.
+  Equivalently,
+  $$
+  V = \spn V
+  $$
+  (FINISH)
+\end{definition}
+
+\begin{theorem}{Dimensions}
+  (FINISH)
+  If $V$ is a subspace, then $V$ is the span of an orthonormal family of vectors.
+  There is only one length such that this is true: the length of this family of vectors is the dimension of $V$.
+
+  \begin{proof}
+    Step 1 - Contruct this basis.
+
+    Take a nonzero element of $V$ (zero-case is trivial).
+
+    (FINISH)
+  \end{proof}
+\end{theorem}
+
+Mappidy moppidy maps
+(FINISH)
+
+
+
+
+
+
+
+
+
+
 
 \recitation{September 16}
 

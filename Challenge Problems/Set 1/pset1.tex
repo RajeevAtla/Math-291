@@ -1,0 +1,326 @@
+\documentclass{article}
+
+\usepackage[stdmargin, noindent]{../../rajeev}
+\usepackage{mathtools}
+\usepackage{dirtytalk}
+
+\pagestyle{fancy}
+\rhead{\today}
+\lhead{Math 291H Challenge Problems \#1}
+
+\begin{document}
+
+\begin{center}
+    \Large \textbf{Math 291H Challenge Problems \#1}
+\end{center}
+\begin{center}
+    \Large Rajeev Atla
+\end{center}
+
+
+Honors Pledge Statement: \say{The writeup of this submission is my own work alone.}
+
+\problem{1}
+\subsection*{a}
+
+
+We need to find the unit vector in the same direction as $\bm{u}$.
+By construction, this unit vector will be in the span of $\bm{u}$ and will therefore be in $W$.
+
+$$
+\bm{u'} = \frac{\bm{u}}{\norm{\bm{u}}} = \frac{1}{\sqrt{6}} \pars{1, 2, 1}
+$$
+
+The parallel component $\bm{w}$ in the same direction as $\bm{u'}$ is then
+
+\begin{align*}
+  \bm{w} &= \pars{\bm{v} \cdot \bm{u}} \bm{u} \\
+         &= \frac{1}{6} \pars{\pars{1, 1, 1} \cdot \pars{1, 2, 1}} \pars{1, 2, 1} \\
+         &= \boxed{\pars{\frac{2}{3}, \frac{4}{3}, \frac{2}{3}}} \\
+\end{align*}
+
+\subsection*{b}
+
+If $\bm{x}$ is in $W^{\perp}$, then
+
+\begin{align*}
+  \bm{u} \cdot \bm{x} &= 0 \\
+  x_1 + 2x_2 + x_3 &= 0 \\
+\end{align*}
+
+\begin{align*}
+  \bm{v}^{\perp} &= \bm{v} - \bm{w} \\
+                 &= \pars{1, 1, 1} - \pars{\frac{2}{3}, \frac{4}{3}, \frac{2}{3}} \\
+                 &= \pars{\frac{1}{3}, -\frac{1}{3}, \frac{1}{3} } \\
+\end{align*}
+
+We can compute
+
+$$
+\frac{1}{3} + (2) \pars{- \frac{1}{3}} + \frac{1}{3} = 0
+$$
+
+Therefore, $\bm{v}^{\perp} \in W^{\perp}$.
+
+\subsection*{c}
+
+We observe that
+
+$$
+x_1 = - 2x_2 - x_3
+$$
+
+Therefore any $\bm{x} \in W^{\perp}$ can be written
+
+\begin{align*}
+  \bm{x} &= \pars{-2x_2 - x_3, x_2, x_3} \\
+  &= x_2 \pars{-2, 1, 0} + x_3 \pars{-1, 0, 1} \\
+\end{align*}
+
+In terms of vectors $\bm{v}_1 = \pars{-2, 1, 0}, \bm{v}_2 = \pars{-1, 0, 1}$, we can parametrize
+
+$$
+\bm{x} \pars{s, t} = s \bm{v}_1 + t \bm{v}_2
+$$
+
+This parametrization uses a total of 2 independent variables.
+That makes sense since a plane is a 2 dimensional object.
+To check that these are the correct vectors, we can verify that $\bm{u} = \bm{v}_1 \times \bm{v}_2$.
+
+\subsection*{d}
+
+We wish to find $\pars{s, t}$ such that the distance $\norm{\bm{x} \pars{s, t} - \bm{v}}$ is minimized.
+To do this, we need to define a convenient orthonormal basis so that calculations become easier.
+Let this basis be $\set{\bm{u}_1, \bm{u}_2, \bm{u}_3}$.
+To make the most terms vanish, we let $\bm{u}_3 := \bm{u'}$ and $\bm{u}_1 := \frac{\bm{v}_1}{\norm{\bm{v}_1}}$.
+To find $\bm{u}_2$, we compute $\bm{w}_2 := \bm{u} \times \bm{v}_1 = \pars{-1, -2, 5}$.
+We then normalize this vector to find $\bm{u}_2$.
+
+
+$$
+\set{\bm{u}_1, \bm{u}_2, \bm{u}_3} := \set{\frac{\bm{v}_1}{\norm{\bm{v}_1}}, \frac{\bm{w}_2}{\norm{\bm{w}_2}}, \bm{u'}} = \set{\pars{- \frac{2}{\sqrt{5}}, \frac{1}{\sqrt{5}}, 0}, \pars{- \frac{1}{\sqrt{30}}, - \frac{2}{\sqrt{30}}, \frac{5}{\sqrt{30}}}, \pars{\frac{1}{\sqrt{6}}, \frac{2}{\sqrt{6}}, \frac{1}{\sqrt{6}}} }
+$$
+
+\begin{align*}
+  \norm{\bm{x} \pars{s, t} - \bm{v}}^2 &= \sum \limits_{i=1}^{i=3} \abs{\pars{\bm{x} \pars{s, t} - \bm{v}} \cdot \bm{u_i}}^2 \\
+                                       &= \sum \limits_{i=1}^{i=3} \abs{\bm{x} \pars{s, t} \cdot \bm{u}_i - \bm{v} \cdot \bm{u}_i}^2 \\
+                                       &= \sum \limits_{i=1}^{i=3} \abs{s \bm{v}_1 \cdot \bm{u}_i + t \bm{v}_2 \cdot \bm{u}_i - \bm{v} \cdot \bm{u}_i }^2 \\
+                                       &= \abs{s \bm{v}_1 \cdot \bm{u}_1 + t \bm{v}_2 \cdot \bm{u}_1 - \bm{v} \cdot \bm{u}_1 }^2 + \abs{s \bm{v}_1 \cdot \bm{u}_2 + t \bm{v}_2 \cdot \bm{u}_2 - \bm{v} \cdot \bm{u}_2 }^2 + \abs{s \bm{v}_1 \cdot \bm{u}_3 + t \bm{v}_2 \cdot \bm{u}_3 - \bm{v} \cdot \bm{u}_3 }^2 \\
+                                       &= \abs{s \norm{\bm{v}_1} + t \bm{v}_2 \cdot \bm{u}_1 - \bm{v} \cdot \bm{u}_1}^2 + \abs{0 + t \bm{v}_2 \cdot \bm{u}_2 - \bm{v} \cdot \bm{u}_2}^2 + \abs{0 + 0 - \bm{v} \cdot \bm{u}_3}^2 \\
+  &= \abs{s \norm{\bm{v}_1} + t \bm{v}_2 \cdot \bm{u}_1 - \bm{v} \cdot \bm{u}_1}^2 + \abs{t \bm{v}_2 \cdot \bm{u}_2 - \bm{v} \cdot \bm{u}_2}^2 + \abs{\bm{v} \cdot \bm{u}_3}^2  \\
+\end{align*}
+
+Here, we use orthogonality to make a lot of the expression vanish.
+We see that the first term depends on both $s$ and $t$, the second term depends on $t$ only, and the final term depends on neither.
+To minimize this sum, we first minimize the second term and solve for $t$
+
+$$
+t \bm{v}_2 \cdot \bm{u}_2 - \bm{v} \cdot \bm{u}_2 = 0 \iff t = \frac{\bm{v} \cdot \bm{u}_2}{\bm{v}_2 \cdot \bm{u}_2} = \frac{\bm{v} \cdot \bm{w}_2}{\bm{v}_2 \cdot \bm{w}_2} = \frac{1}{3}
+$$
+
+Now that we know the optimal value of $t$, we can use this to minimize the first term as well.
+
+$$
+s \norm{\bm{v}_1} + t \bm{v}_2 \cdot \bm{u}_1 - \bm{v} \cdot \bm{v}_1 = 0 \iff s = \frac{\bm{v} \cdot \bm{u}_1 - t \bm{v}_2 \cdot \bm{u}_1 }{\norm{\bm{v}_1}} = \frac{\bm{v} \cdot \bm{v}_1 - t \bm{v}_2 \cdot \bm{v}_1 }{\norm{\bm{v}_1}^2} = \frac{-1 - \frac{1}{3} \pars{2}}{5} = - \frac{1}{3}
+$$
+
+Finally, we can substitute these values for $s$ and $t$, getting
+
+$$
+\bm{x} \pars{ - \frac{1}{3}, \frac{1}{3}} = - \frac{1}{3} \pars{-2, 1, 0} + \frac{1}{3} \pars{-1, 0, 1} = \boxed{\pars{\frac{1}{3}, - \frac{1}{3}, \frac{1}{3}}}
+$$
+
+\problem{2}
+
+\subsection*{a}
+
+We normalize $\bm{v}_1$ to get $\bm{u}_1$.
+
+$$
+\bm{u}_1 = \frac{\bm{v}_1}{\norm{\bm{v}_1}} = \frac{1}{2} \pars{1, 1, -1, -1}
+$$
+
+We define
+
+\begin{align*}
+  \bm{w}_2 &:= \bm{v}_2 - \pars{\bm{u}_1 \cdot \bm{v}_2} \bm{u}_1 \\
+           &= \pars{2, 0, -2, 0} - \frac{1}{4} \pars{4} \pars{1, 1, -1, -1} \\
+           &= \pars{1, -1, -1, 1} \\
+\end{align*}
+
+Note that by construction, $\bm{w}_2$ is orthogonal to $\bm{u}_1$, since $\bm{w}_2 \cdot \bm{u}_1 = 0$.
+Normalizing $\bm{w}_2$ and defining the resultant vector to be $\bm{u}_2$, we find that
+
+$$
+\bm{u}_2 = \frac{\bm{w}_2}{\norm{\bm{w}_2}} = \frac{1}{2} \pars{1, -1, -1, 1}
+$$
+
+Similarly, we can do the same for $\bm{v}_3$.
+
+\begin{align*}
+  \bm{w}_3 :&= \bm{v}_3 - \pars{\bm{v}_3 \cdot \bm{u}_1} \bm{u}_1 - \pars{\bm{v}_3 \cdot \bm{u}_2} \bm{u}_2 \\
+            &= \pars{4, -2, -2, 0} - \frac{1}{4} \pars{4} \pars{1, 1, -1, -1} - \frac{1}{4} \pars{8} \pars{1, -1, -1, 1} \\
+            &= \pars{4, -2, -2, 0} - \pars{1, 1, -1, -1} - \pars{2, -2, -2, 2} \\
+            &= \pars{1, -1, 1, -1} \\
+  \bm{u}_3 &= \frac{\bm{w}_3}{\norm{\bm{w}_3}} \\
+            &= \frac{1}{2} \pars{1, -1, 1, -1} \\
+\end{align*}
+
+Note that by construction, $\bm{w}_3 \cdot \bm{u}_i = 0,\ \forall i \in \set{1, 2}$.
+The orthonormal basis is then
+
+$$
+\boxed{\set{\pars{\frac{1}{2}, \frac{1}{2}, -\frac{1}{2}, -\frac{1}{2}}, \pars{\frac{1}{2}, -\frac{1}{2}, -\frac{1}{2}, \frac{1}{2}}, \pars{\frac{1}{2}, -\frac{1}{2}, \frac{1}{2}, -\frac{1}{2}}}}
+$$
+
+Noting that the second and fourth components of $\bm{v}_2$ are 0, we can save some time by and look for unit vectors whose sum also has this property.
+Doing so, we observe that $\bm{u}_1 + \bm{u}_2 = \pars{1, 0, -1, 0}$.
+This vector is in the same direction as $\bm{v}_2$ and simply needs to be scaled up by a factor of 2 to construct $\bm{v}_2$.
+
+$$
+\boxed{\bm{v}_2 = 2 \bm{u}_1 + 2 \bm{u}_2}
+$$
+
+Unfortunately we have to do the old-fashioned approach to write $\bm{v}_3$.
+
+\begin{align*}
+  \bm{v}_3 &= a \bm{u}_1 + b \bm{u}_2 + c \bm{u}_3 \\
+  \pars{4, -2, -2, 0} &= \frac{a}{2} \pars{1, 1, -1, -1} + \frac{b}{2} \pars{1, -1, -1, 1} + \frac{c}{2} \pars{1, -1, 1, -1} \\
+  \pars{8, -4, -4, 0} &= \pars{a + b + c, a - b - c, -a - b + c, -a + b - c} \\
+  &\begin{cases}
+    8 = a + b +c \\
+    -4 = a - b -c \\
+    -4 = -a - b + c \\
+    0 = -a + b - c \\
+  \end{cases}
+\end{align*}
+
+Solving the system of equations, we find $a=2, b=4, c=2$.
+Therefore,
+$$
+\boxed{\bm{v}_3 = 2 \bm{u}_1 + 4 \bm{u}_2 + 2 \bm{u}_3}
+$$
+
+\subsection*{b}
+
+Let $r, s, t \in \RR$ and let $\bm{x} \in W$.
+We can parametrize $\bm{x}$ with the fact that it can be written as a linear combination of $\bm{v}_1, \bm{v}_2, \bm{v}_3$.
+
+$$
+\bm{x} = r \bm{v}_1 + s \bm{v}_2 + t \bm{v}_3
+$$
+
+In order to make it easier for us, we decompose $\bm{v}_1, \bm{v}_2, \bm{v}_3$ into the unit vectors from the previous part.
+
+$$
+\bm{x} = 2 r \bm{u}_1 + 2 s \bm{u}_1 + 2 s \bm{u}_2 + 2t \bm{u}_1 + 4t \bm{u}_2 + 2t \bm{u}_3 = \pars{2r + 2s + 2t} \bm{u}_1 + \pars{2s + 4t} \bm{u}_2 + 2t \bm{u}_3
+$$
+
+To use more convenient variables, we define the mapping
+
+$$
+\pars{a, b, c} \to \pars{2r+2s+2t, 2s + 4t, 2t}
+$$
+
+We can now parametrize $\bm{x}$ as
+
+$$
+\bm{x} \pars{a, b, c} = a \bm{u}_1 + b \bm{u}_2 + c \bm{u}_3
+$$
+
+We wish to minimize the quantity $\norm{\bm{x} \pars{a, b, c} - \bm{v}_4}$ by choosing an appropriate $\pars{a, b, c}$.
+Using the orthonormal basis we found in the previous part, we can compute
+
+\begin{align*}
+  \norm{\bm{x} \pars{a, b, c} - \bm{v}_4}^2 &= \sum \limits_{i=1}^{i=3} \abs{ \pars{a \bm{u}_1 + b \bm{u}_2 + c \bm{u}_3 - \bm{v}_4} \cdot \bm{u}_i}^2 \\
+                                            &= \abs{a - \bm{v}_4 \cdot \bm{u}_1}^2 + \abs{b - \bm{v}_4 \cdot \bm{u}_2}^2 + \abs{c - \bm{v}_4 \cdot \bm{u}_3}^2 \\
+\end{align*}
+
+Here, we have used the fact that $\bm{u}_i \cdot \bm{u}_j = \delta_{ij}$.
+($\delta_{ij}$ is the Kronecker delta.)
+To minimize everything, we have
+
+\begin{align*}
+  a &= \bm{v}_4 \cdot \bm{u}_1 = 4\\
+  b &= \bm{v}_4 \cdot \bm{u}_2 = 0\\
+  c &= \bm{v}_4 \cdot \bm{u}_3 = 2\\
+\end{align*}
+
+Therefore, the point closest is
+
+\begin{align*}
+  \bm{x} &= 4 \pars{\frac{1}{2}} \pars{1, 1, -1, -1} + 0 \pars{\frac{1}{2}} \pars{1, -1, -1, 1} + 2 \pars{\frac{1}{2}} \pars{1, -1, 1, -1}  \\
+         &= \pars{2, 2, -2, -2} + \pars{1, -1, 1, -1} \\
+         &= \boxed{\pars{3, 1, -1, -3}} \\
+\end{align*}
+
+
+\subsection*{c}
+
+In order to do this problem efficiently, we continue the Gram-Schmidt process with $\bm{v}_4$ to add to our orthonormal subset.
+
+\begin{align*}
+  \bm{w}_4 &= \bm{v}_4 - \pars{\bm{v}_4 \cdot \bm{u}_1} \bm{u}_1 - \pars{\bm{v}_4 \cdot \bm{u}_2} \bm{u}_2 - \pars{\bm{v}_4 \cdot \bm{u}_3} \bm{u}_3 \\
+           &= \pars{6, 4, 2, 0} - \pars{2, 2, -2, -2} - 0 \pars{1, -1, -1, 1} - \pars{1, -1, 1, -1} \\
+           &= \pars{3, 3, 3, 3} \\
+  \bm{u}_4 &= \frac{\bm{w}_4}{\norm{\bm{u}_4}} \\
+           &= \frac{1}{2} \pars{1, 1, 1, 1} \\
+\end{align*}
+
+We can solve a system of equations to find $\bm{v}_4 = 4 \bm{u}_1 + 2 \bm{u}_3 + 6 \bm{u}_4$.
+
+By the Gram-Schmidt process,
+
+$$
+\spn \set{\bm{v}_1, \bm{v}_2} = \spn \set{\bm{u}_1, \bm{u}_2}
+$$
+
+Suppose we have a point $\bm{x} \in V$.
+Then for some $r, s \in \RR$, we can write
+
+$$
+\bm{x} \pars{r, s} = r \bm{u}_1 + s \bm{u}_2
+$$
+
+Suppose we have another point $\bm{y} \in L$.
+We can write
+
+$$
+\bm{y} \pars{t} = \bm{v}_4 + t \bm{v}_3 = 4 \bm{u}_1 + 2 \bm{u}_3 + 6 \bm{u}_4 + t \pars{2\bm{u}_1 + 4 \bm{u}_2 + 2 \bm{u}_3}
+$$
+
+We wish to find $\min \norm{\bm{x} - \bm{y}}$.
+We have
+
+\begin{align*}
+  \norm{\bm{x} - \bm{y}} &= \norm{r \bm{u}_1 + s \bm{u}_2 - \pars{4 \bm{u}_1 + 2 \bm{u}_3 + 6 \bm{u}_4 + t \pars{2\bm{u}_1 + 4 \bm{u}_2 + 2 \bm{u}_3}}} \\
+  &= \norm{\bm{u}_1 \pars{r - 4 - 2t} + \bm{u}_2 \pars{s - 4t} + \bm{u}_3 \pars{2t - 3} - 4 \bm{u}_4} \\
+\end{align*}
+
+We can minimize this quantity by first minimizing the $\bm{u}_1$-component.
+
+$$
+2t - 3 = 0 \iff t = \frac{3}{2}
+$$
+
+Similarly, we find $r=7$ and $s=6$ by minimizing the $\bm{u}_1$ and $\bm{u}_3$-components, respectively.
+We can then simply compute
+
+$$
+\boxed{\min \norm{\bm{x} - \bm{y}} = 4}
+$$
+
+Similarly, we can find the points on $V$ and $L$.
+
+$$
+\bm{y} = 4 \bm{u}_1 + 2 \bm{u}_3 + 6 \bm{u}_4 + 3 \bm{u}_1 + 6 \bm{u}_2 + 3 \bm{u}_3 = 7 \bm{u}_1 + 6 \bm{u}_2 + 5 \bm{u}_3 + 6 \bm{u}_4 = \boxed{\pars{12, 1, -1, 0}} 
+$$
+
+$$
+\bm{x} = 7 \bm{u}_1 + 6 \bm{u}_2 = \boxed{\pars{\frac{13}{2}, \frac{1}{2}, -\frac{13}{2}, \frac{1}{2}}}
+$$
+
+
+\end{document}
+
+

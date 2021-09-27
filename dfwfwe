@@ -1,0 +1,118 @@
+[33mcommit 693e2264227912cf16545a6c175fedf1b511703c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Mon Sep 13 02:14:32 2021 -0400
+
+    finish hw #1 and comp lab #1
+
+[33mcommit 5599004a5fac0607e0bf9dcfb645c1f462c1b20d[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Thu Sep 9 12:16:43 2021 -0400
+
+    fix typos
+
+[33mcommit 585dde8a82742906ff92650d081ad68529525e9b[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Thu Sep 9 01:47:57 2021 -0400
+
+    update
+    
+    fix link
+    get rid of redundant notes button
+
+[33mcommit b989e51a823fb87c30e704086babc5b179f5022f[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Thu Sep 9 01:46:33 2021 -0400
+
+    Update README.md
+
+[33mcommit 34bc8db5f1d31d49687bc7f097b109704790ffd7[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Thu Sep 9 01:44:53 2021 -0400
+
+    fix typo
+
+[33mcommit 928a1fd47e883357034a689095c8a618fe92d7c1[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Thu Sep 9 01:40:58 2021 -0400
+
+    attempt to add link to notes
+
+[33mcommit 838b67ee8f036e751bf0f1d9822f51a2526c0f6f[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Thu Sep 9 01:35:00 2021 -0400
+
+    fix typos
+
+[33mcommit 150123b96007149099f15e37b3594c364de5c5d2[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Thu Sep 9 01:16:48 2021 -0400
+
+    revise notes
+
+[33mcommit ac652d31744465c71eae7dc06103b0d397ff5d2f[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Thu Sep 9 00:51:26 2021 -0400
+
+    add 9/8 lecture notes
+
+[33mcommit 4666678a887da5048b5ac44372fdf525ebcaa0e8[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Wed Sep 8 11:50:45 2021 -0400
+
+    add first assignment
+
+[33mcommit 932cd21d6e5525ae194e1dad73b8e3d77ba68737[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 15:05:21 2021 -0400
+
+    Update README.md
+
+[33mcommit 239fc174e20b342086384fc2887ea0357469a714[m
+Merge: a0a4fd3 bb6bbc6
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 15:04:03 2021 -0400
+
+    Merge branch 'main' of https://github.com/RajeevAtla/Math-291
+
+[33mcommit a0a4fd3804934b6329523b5a89e9d2ceda7139ed[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 15:03:51 2021 -0400
+
+    reorganize, add carlen's text, and finish recitation notes
+
+[33mcommit bb6bbc6685093cd6d8ff90c7c34a385bfa72f92f[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 14:39:26 2021 -0400
+
+    Create README.md
+
+[33mcommit 1143e9daef65d92b42e80cb9dddd08185c31aaf5[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 14:39:13 2021 -0400
+
+    Set theme jekyll-theme-minimal
+
+[33mcommit a6da6e453ff8e76d39a2a06dfcbc5210b3db6348[m
+Merge: 68e0a65 40bc7e4
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 14:33:57 2021 -0400
+
+    Merge branch 'main' of https://github.com/RajeevAtla/Math-291
+
+[33mcommit 68e0a6549d8dd53b412e7c74dddba4a380922fa3[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 14:32:39 2021 -0400
+
+    clean
+
+[33mcommit a9fd55fa5bbf78e9ef7a97b7844de36903715067[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 13:27:06 2021 -0400
+
+    initial commit
+
+[33mcommit 40bc7e46af5082974f42ce31d6255365cd17a2c9[m
+Author: Rajeev Atla <rajeev@rajeevatla.com>
+Date:   Fri Sep 3 13:15:17 2021 -0400
+
+    Initial commit
